@@ -3,7 +3,7 @@ import { BillboardWeek } from "./billboardWeek";
 
 export const Navigation = () => {
   return (
-    <nav className="flex flex-row w-full h-[290px] fixed top-0">
+    <nav className="flex flex-row w-full h-[290px] fixed top-0 z-10">
       <div className="flex flex-col justify-start items-end w-[550px] h-full bg-black">
         <div className="w-[450px] h-[200px] flex flex-row justify-center items-center relative">
           <div className="flex flex-row mr-[120px]">

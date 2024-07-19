@@ -1,0 +1,12 @@
+import { BillboardCard } from "./billboardCard";
+export const BillboardCardPack = ({ data }) => {
+  const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  console.log("data inside billboardcard pack:", data);
+  return (
+    <div>
+      {arr.map((i) => (
+        <BillboardCard key={i} data={data[i]} />
+      ))}
+    </div>
+  );
+};

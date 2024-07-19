@@ -1,4 +1,11 @@
 import { Video } from "./video";
+import {
+  YoutubeSkeletonVideo,
+  YoutubeSkeletonNumber,
+  YoutubeSkeletonText,
+  BillboardSkeletonNumber,
+  BillboardSkeletonText,
+} from "./skeleton";
 
 export const BillboardCard = ({ data }) => {
   const stringDot = (str, maxLength) => {
@@ -15,18 +22,26 @@ export const BillboardCard = ({ data }) => {
         <div className="flex flex-col w-[450px] bg-black">
           <div className="flex h-[200px]">
             <div className="h-full w-[350px]">
-              <Video src={data.video} />
+              {data ? <Video src={data.video} /> : <YoutubeSkeletonVideo />}
             </div>
             <div className="h-full w-[100px] flex justify-center items-center text-white font-poppins font-bold text-4xl">
-              {data.this_week}
+              {data ? data.this_week : <YoutubeSkeletonNumber />}
             </div>
           </div>
           <div className="h-[130px]">
             <div className="text-white font-roboto font-base text-2xl mt-3">
-              {stringDot(`${data.title} - ${data.artist}`, 30)}
+              {data ? (
+                stringDot(`${data.title} - ${data.artist}`, 30)
+              ) : (
+                <YoutubeSkeletonText length={300} height={6} />
+              )}
             </div>
             <div className="text-neutral-500 font-roboto font-base text-xl">
-              {stringDot(`${data.artist}`, 40)}
+              {data ? (
+                stringDot(`${data.artist}`, 40)
+              ) : (
+                <YoutubeSkeletonText length={150} height={4} />
+              )}
             </div>
           </div>
         </div>
@@ -34,26 +49,34 @@ export const BillboardCard = ({ data }) => {
           <div className="w-1/4 h-[200px] flex flex-col justify-center items-start">
             <div className="ml-10">
               <div className="font-poppins font-black text-3xl">
-                {stringDot(`${data.title}`, 20)}
+                {data ? (
+                  stringDot(`${data.title}`, 20)
+                ) : (
+                  <BillboardSkeletonText length={150} height={6} />
+                )}
               </div>
               <div className="font-poppins font-light text-3xl">
-                {stringDot(`${data.artist}`, 20)}
+                {data ? (
+                  stringDot(`${data.artist}`, 20)
+                ) : (
+                  <BillboardSkeletonText length={250} height={8} />
+                )}
               </div>
             </div>
           </div>
           <div className="w-1/4 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
-              {data.last_week}
+              {data ? data.last_week : <BillboardSkeletonNumber />}
             </div>
           </div>
           <div className="w-1/4 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
-              {data.peak_pos}
+              {data ? data.peak_pos : <BillboardSkeletonNumber />}
             </div>
           </div>
           <div className="w-1/4 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
-              {data.wks_on_chart}
+              {data ? data.wks_on_chart : <BillboardSkeletonNumber />}
             </div>
           </div>
         </div>

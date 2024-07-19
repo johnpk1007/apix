@@ -1,13 +1,20 @@
 "use client";
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef, useCallback } from "react";
 import { Context } from "../../components/provider";
 import { stringFromId } from "./stringFromId";
 import { BillboardCard } from "../../components/billboardCard";
+import { BillboardCardPack } from "../../components/billboardCardPack";
+import { root } from "postcss";
 
 export default function HomePage() {
   const { billboardWeek, setBillboardWeek } = useContext(Context);
   const [data, setData] = useState([]);
+
+  const target = useRef(null);
+  let result = [];
+
+  const [num, setNum] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -16,31 +23,43 @@ export default function HomePage() {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      const result = await response.json();
-      console.log("result:", result);
-      setData(result);
-      return result[0]._id;
+      result = await response.json();
+      const slicedResult = result.slice(0, 10);
+      setData(slicedResult);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
-    const func = async () => {
-      const dataId = await fetchData();
-      const string = stringFromId(dataId);
-      setBillboardWeek(string);
-    };
-    func();
+    fetchData();
   }, []);
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+
+  const callback = (entry) => {
+    if (entry[0].isIntersecting) {
+      setNum((prevNum) => prevNum + 1);
+    }
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(callback);
+    if (target.current) {
+      observer.observe(target.current);
+    }
+    return () => {
+      if (target.current) {
+        observer.unobserve(target.current);
+      }
+    };
+  }, [target]);
+
+  useEffect(() => {
+    console.log("num:", num);
+  }, [num]);
 
   return (
-    <div className="mt-[290px]">
-      {data.map((singleData) => (
-        <BillboardCard key={singleData._id} data={singleData} />
-      ))}
+    <div className="mt-[290px] flex flex-col">
+      <BillboardCardPack data={data} />
+      <div ref={target}>ref</div>
     </div>
   );
 }
