@@ -10,11 +10,9 @@ import { root } from "postcss";
 export default function HomePage() {
   const { billboardWeek, setBillboardWeek } = useContext(Context);
   const [data, setData] = useState([]);
+  const [num, setNum] = useState(0);
 
   const target = useRef(null);
-  let result = [];
-
-  const [num, setNum] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -23,9 +21,10 @@ export default function HomePage() {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      result = await response.json();
-      const slicedResult = result.slice(0, 10);
-      setData(slicedResult);
+      const responseJson = await response.json();
+      const billboardWeek = stringFromId(responseJson[0]._id);
+      setBillboardWeek(billboardWeek);
+      setData(responseJson);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -52,14 +51,10 @@ export default function HomePage() {
     };
   }, [target]);
 
-  useEffect(() => {
-    console.log("num:", num);
-  }, [num]);
-
   return (
     <div className="mt-[290px] flex flex-col">
-      <BillboardCardPack data={data} />
-      <div ref={target}>ref</div>
+      <BillboardCardPack data={data} num={num} />
+      <div ref={target}></div>
     </div>
   );
 }

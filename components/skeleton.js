@@ -10,10 +10,11 @@ export const YoutubeSkeletonNumber = () => {
   );
 };
 
-export const YoutubeSkeletonText = ({ length, height }) => {
+export const YoutubeSkeletonText = ({ width, height }) => {
   return (
     <div
-      className={`rounded-xl h-${height} w-[${length}px] bg-slate-800 animate-pulse mt-4`}
+      className={`rounded-xl bg-slate-800 animate-pulse mt-4`}
+      style={{ width, height }}
     ></div>
   );
 };
@@ -24,10 +25,11 @@ export const BillboardSkeletonNumber = () => {
   );
 };
 
-export const BillboardSkeletonText = ({ length, height }) => {
+export const BillboardSkeletonText = ({ width, height }) => {
   return (
     <div
-      className={`rounded-2xl h-${height} w-[${length}px] bg-slate-200 animate-pulse mt-4`}
+      className={`rounded-2xl bg-slate-200 animate-pulse mt-4`}
+      style={{ width, height }}
     ></div>
   );
 };

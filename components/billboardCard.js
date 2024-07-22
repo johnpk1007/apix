@@ -33,14 +33,14 @@ export const BillboardCard = ({ data }) => {
               {data ? (
                 stringDot(`${data.title} - ${data.artist}`, 30)
               ) : (
-                <YoutubeSkeletonText length={300} height={6} />
+                <YoutubeSkeletonText width={300} height={20} />
               )}
             </div>
             <div className="text-neutral-500 font-roboto font-base text-xl">
               {data ? (
                 stringDot(`${data.artist}`, 40)
               ) : (
-                <YoutubeSkeletonText length={150} height={4} />
+                <YoutubeSkeletonText width={150} height={20} />
               )}
             </div>
           </div>
@@ -52,14 +52,14 @@ export const BillboardCard = ({ data }) => {
                 {data ? (
                   stringDot(`${data.title}`, 20)
                 ) : (
-                  <BillboardSkeletonText length={150} height={6} />
+                  <BillboardSkeletonText width={200} height={20} />
                 )}
               </div>
               <div className="font-poppins font-light text-3xl">
                 {data ? (
                   stringDot(`${data.artist}`, 20)
                 ) : (
-                  <BillboardSkeletonText length={250} height={8} />
+                  <BillboardSkeletonText width={150} height={20} />
                 )}
               </div>
             </div>
