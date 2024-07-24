@@ -14,24 +14,32 @@ export default function HomePage() {
 
   const target = useRef(null);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/api/main");
-      // const response = await fetch("/api/update/weekly");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const responseJson = await response.json();
-      const billboardWeek = stringFromId(responseJson[0]._id);
-      setBillboardWeek(billboardWeek);
-      setData(responseJson);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch("/api/main");
+  //     // const response = await fetch("/api/update/weekly");
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const responseJson = await response.json();
+  //     const billboardWeek = stringFromId(responseJson[0]._id);
+  //     setBillboardWeek(billboardWeek);
+  //     setData(responseJson);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+  // const fetchArtist = async () => {
+  //   await fetch("/api/daily");
+  // };
+
+  // useEffect(() => {
+  //   fetchArtist();
+  // }, []);
 
   const callback = (entry) => {
     if (entry[0].isIntersecting) {
@@ -52,7 +60,7 @@ export default function HomePage() {
   }, [target]);
 
   return (
-    <div className="mt-[290px] flex flex-col">
+    <div className="mt-[170px] flex flex-col">
       <BillboardCardPack data={data} num={num} />
       <div ref={target}></div>
     </div>

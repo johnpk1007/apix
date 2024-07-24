@@ -4,11 +4,7 @@ import axios from "axios";
 export async function scrape() {
   let content = [];
   const url = "https://www.billboard.com/charts/hot-100/";
-  const response = await axios.get(url, {
-    next: {
-      revalidate: 10,
-    },
-  });
+  const response = await axios.get(url);
   const html = response.data;
   const $ = cheerio.load(html);
   const list = $(

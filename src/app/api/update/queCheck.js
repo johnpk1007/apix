@@ -30,7 +30,7 @@ export const queCheck = async () => {
         titleAristVideos.findIndex(
           (titleAristVideo) =>
             titleAristVideo.title === newQueItem.title &&
-            titleAristVideo.artist === newQueItem.artist
+            titleAristVideo.artist.includes(newQueItem.artist)
         ) === -1
       ) {
         if (

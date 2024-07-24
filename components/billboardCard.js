@@ -16,7 +16,7 @@ export const BillboardCard = ({ data }) => {
   };
 
   return (
-    <div className="flex w-full h-[330px]">
+    <div className="flex w-full h-[300px]">
       <div className="w-[100px] h-full bg-black border-black border-2" />
       <div className="flex justify-start w-[calc(100%-100px)] h-full border-b-2 border-neutral-300">
         <div className="flex flex-col w-[450px] bg-black">
@@ -28,7 +28,7 @@ export const BillboardCard = ({ data }) => {
               {data ? data.this_week : <YoutubeSkeletonNumber />}
             </div>
           </div>
-          <div className="h-[130px]">
+          <div className="h-[100px]">
             <div className="text-white font-roboto font-base text-2xl mt-3">
               {data ? (
                 stringDot(`${data.title} - ${data.artist}`, 30)

@@ -13,7 +13,7 @@ const videoSearch = async (query) => {
     );
     return response.data.items[0].id.videoId;
   } catch (error) {
-    console.error(error);
+    console.log("videosearch error");
     throw error;
   }
 };
@@ -54,6 +54,7 @@ export const artistTitleVideoInsertion = async () => {
     } catch (error) {
       await session.abortTransaction();
       session.endSession();
+      hasMore = false;
       throw error;
     }
   }

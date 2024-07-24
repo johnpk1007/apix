@@ -9,9 +9,9 @@ export const BillboardWeek = () => {
   console.log("billboardWeek.length:", billboardWeek.length);
   return (
     <div className="flex flex-col justify-center items-end mr-3">
-      <div className="font-poppins font-black text-2xl">Billboard Hot 100</div>
+      <div className="font-poppins font-black text-lg">Billboard Hot 100</div>
       {billboardWeek !== "" ? (
-        <div className="font-poppins font-semibold text-3xl">
+        <div className="font-poppins font-semibold text-2xl">
           {billboardWeek}
         </div>
       ) : (

@@ -4,6 +4,9 @@ import { queInsertion } from "../queInsertion";
 import { queCheck } from "../queCheck";
 import { artistTitleVideoInsertion } from "../artistTitleVideoInsertion";
 import { billboardUpdate } from "../billboardUpdate";
+import { multipleArtistScrape } from "../multipleArtistScrape";
+import { billboardQueInsertion } from "../billboardQueInsertion";
+import { billboardArtistUpdate } from "../billboardArtistUpdate";
 
 export const GET = async () => {
   //connect to DB
@@ -50,17 +53,37 @@ export const GET = async () => {
     });
   }
 
+  //billboard artist scrape process
+  try {
+    await multipleArtistScrape(data);
+  } catch (error) {
+    console.error("Error in billboard artist scrape:", error);
+    return new Response(
+      JSON.stringify({ message: "Error in billboard artist scrape" }),
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
+  //billboard que insertion process
+  try {
+    await billboardQueInsertion();
+  } catch (error) {
+    console.error("Error in billboard que insertion:", error);
+    return new Response(
+      JSON.stringify({ message: "Error in billboard que insertion" }),
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
   // artistTitleVideo process
   try {
     await artistTitleVideoInsertion();
   } catch (error) {
     console.error("Error in artistTitleVideoInsertion:", error);
-    return new Response(
-      JSON.stringify({ message: "Error in artistTitleVideoInsertion" }),
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    );
   }
 
   //billboard update
@@ -70,6 +93,19 @@ export const GET = async () => {
     console.error("Error in billboardUpdate:", error);
     return new Response(
       JSON.stringify({ message: "Error in billboardUpdate" }),
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
+  //billboard artist update
+  try {
+    await billboardArtistUpdate();
+  } catch (error) {
+    console.error("Error in billboardArtistUpdate:", error.message);
+    return new Response(
+      JSON.stringify({ message: "Error in billboard artist Update" }),
       {
         headers: { "Content-Type": "application/json" },
       }
