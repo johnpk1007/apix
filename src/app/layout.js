@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${poppins.variable} ${roboto.variable}`}>
       <body className="relative">
         <Provider>
-          <Navigation />
+          {/* <Navigation /> */}
           {children}
         </Provider>
       </body>

@@ -10,6 +10,12 @@ export const YoutubeSkeletonNumber = () => {
   );
 };
 
+export const YoutubeSkeletonArtistPicture = () => {
+  return (
+    <div className="rounded-full h-[150px] w-[150px] bg-slate-800 animate-pulse"></div>
+  );
+};
+
 export const YoutubeSkeletonText = ({ width, height }) => {
   return (
     <div

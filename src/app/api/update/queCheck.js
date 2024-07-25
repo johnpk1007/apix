@@ -11,55 +11,60 @@ export const queCheck = async () => {
     const newQueItems = [];
     const finalQueItems = [];
 
-    //checkinig for same que item
-    for (const queItem of queItems) {
-      if (
-        newQueItems.findIndex(
-          (newQueItem) =>
-            newQueItem.title === queItem.title &&
-            newQueItem.artist === queItem.artist
-        ) === -1
-      ) {
-        newQueItems.push(queItem);
-      }
-    }
-
-    //checking if titleAristVideo has queItem already
-    for (const newQueItem of newQueItems) {
-      if (
-        titleAristVideos.findIndex(
-          (titleAristVideo) =>
-            titleAristVideo.title === newQueItem.title &&
-            titleAristVideo.artist.includes(newQueItem.artist)
-        ) === -1
-      ) {
+    if (queItems.length !== 0) {
+      //checkinig for same que item
+      for (const queItem of queItems) {
         if (
-          finalQueItems.findIndex(
-            (finalQueItem) =>
-              finalQueItem.title === newQueItem.title &&
-              finalQueItem.artist === newQueItem.artist
+          newQueItems.findIndex(
+            (newQueItem) =>
+              newQueItem.title === queItem.title &&
+              newQueItem.artist === queItem.artist
           ) === -1
         ) {
-          finalQueItems.push(newQueItem);
+          newQueItems.push(queItem);
         }
       }
-    }
-    const bulkOperation = finalQueItems.map((finalQueItem) => ({
-      insertOne: { document: finalQueItem },
-    }));
 
-    await Que.bulkWrite(
-      [
-        {
-          deleteMany: { filter: {} },
-        },
-        ...bulkOperation,
-      ],
-      { session }
-    );
+      //checking if titleAristVideo has queItem already
+      for (const newQueItem of newQueItems) {
+        if (
+          titleAristVideos.findIndex(
+            (titleAristVideo) =>
+              titleAristVideo.title === newQueItem.title &&
+              titleAristVideo.artist.includes(newQueItem.artist)
+          ) === -1
+        ) {
+          if (
+            finalQueItems.findIndex(
+              (finalQueItem) =>
+                finalQueItem.title === newQueItem.title &&
+                finalQueItem.artist === newQueItem.artist
+            ) === -1
+          ) {
+            finalQueItems.push(newQueItem);
+          }
+        }
+      }
+      const bulkOperation = finalQueItems.map((finalQueItem) => ({
+        insertOne: { document: finalQueItem },
+      }));
+
+      await Que.bulkWrite(
+        [
+          {
+            deleteMany: { filter: {} },
+          },
+          ...bulkOperation,
+        ],
+        { session }
+      );
+      console.log("billboard insertion complete");
+    } else {
+      console.log("nothing to check in que");
+    }
+
     await session.commitTransaction();
     session.endSession();
-    console.log("billboard insertion complete");
   } catch (error) {
     await session.abortTransaction();
     session.endSession();

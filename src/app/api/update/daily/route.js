@@ -22,6 +22,7 @@ export const GET = async () => {
   const billboardArtistCheckResult = await billboardArtistCheck();
 
   if (billboardCheckResult === true && billboardArtistCheckResult === true) {
+    console.log("nothing to update");
     return new Response(JSON.stringify({ message: "nothing to update" }), {
       headers: { "Content-Type": "application/json" },
     });
@@ -45,7 +46,7 @@ export const GET = async () => {
   }
 
   //billboard update
-  if (billboardCheck) {
+  if (billboardCheckResult) {
     try {
       await billboardUpdate();
     } catch (error) {
@@ -57,10 +58,12 @@ export const GET = async () => {
         }
       );
     }
+  } else {
+    console.log("nothing to update in billboardUpdate");
   }
 
   //billboard artist update
-  if (billboardArtistCheck) {
+  if (billboardArtistCheckResult) {
     try {
       await billboardArtistUpdate();
     } catch (error) {
@@ -72,6 +75,8 @@ export const GET = async () => {
         }
       );
     }
+  } else {
+    console.log("nothing to update in billboard artist update");
   }
 
   return new Response(JSON.stringify({ message: "daily api update" }), {

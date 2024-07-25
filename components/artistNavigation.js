@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { BillboardWeek } from "./billboardWeek";
 
-export const Navigation = ({ billboardWeek }) => {
+export const ArtistNavigation = ({ artist, image }) => {
   return (
-    <nav className="flex flex-row w-full h-[170px] fixed top-0 z-10">
+    <nav className="flex flex-row w-full h-[120px] fixed top-0 z-10">
       <div className="flex flex-col justify-start items-end w-[550px] h-full bg-black">
         <div className="w-[450px] h-[120px] flex flex-row justify-center items-center relative">
           <div className="flex flex-row mr-[100px]">
@@ -30,7 +29,6 @@ export const Navigation = ({ billboardWeek }) => {
             className="object-contain absolute right-[-29px]"
           />
         </div>
-        <div className="w-[450px] h-[50px] border-b-2 border-neutral-300" />
       </div>
       <div className="flex flex-col h-full w-[calc(100%-550px)] bg-white">
         <div className="flex flex-row justify-between w-full h-[120px] relative">
@@ -45,18 +43,6 @@ export const Navigation = ({ billboardWeek }) => {
             height={52}
             className="object-contain ml-[120px]"
           />
-          <BillboardWeek billboardWeek={billboardWeek} />
-        </div>
-        <div className="flex flex-row justify-end w-full h-[50px] border-b-2 border-neutral-300">
-          <div className="flex justify-center items-center h-full w-1/4 font-poppins font-black text-2xl text-#8289a1">
-            LAST WEEK
-          </div>
-          <div className="flex justify-center items-center h-full w-1/4 font-poppins font-black text-2xl text-#8289a1">
-            PEAK POS.
-          </div>
-          <div className="flex justify-center items-center h-full w-1/4 font-poppins font-black text-2xl text-#8289a1">
-            WKS ON CHART
-          </div>
         </div>
       </div>
     </nav>

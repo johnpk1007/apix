@@ -29,6 +29,11 @@ export const artistTitleVideoInsertion = async () => {
         .limit(10)
         .session(session);
       if (queItems.length === 0) {
+        console.log(
+          "nothing to process in que for artist title video insertion"
+        );
+        await session.abortTransaction();
+        session.endSession();
         hasMore = false;
         break;
       }

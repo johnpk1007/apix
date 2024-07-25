@@ -8,6 +8,9 @@ export async function artistScrape(artist) {
     const response = await axios.get(url);
     const html = response.data;
     const $ = cheerio.load(html);
+    const image = $(
+      "div.a-artist-history-page-background > div.artist-info-chart-history"
+    );
     const list = $(
       "div.artist-chart-history-container > div.artist-chart-history-items> div.o-chart-results-list-row"
     );
@@ -44,11 +47,18 @@ export async function artistScrape(artist) {
       };
     });
     content.sort((a, b) => a.peak_pos - b.peak_pos);
+
     if (content.length > 5) {
       const slicedContent = content.slice(0, 5);
-      return slicedContent;
+      return {
+        artistImage: image.find("img").attr("data-lazy-src"),
+        top5songs: slicedContent,
+      };
     } else {
-      return content;
+      return {
+        artistImage: image.find("img").attr("data-lazy-src"),
+        top5songs: content,
+      };
     }
   } catch (error) {
     console.error(error.message);

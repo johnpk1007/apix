@@ -3,7 +3,7 @@ import BillboardVideo from "../../../../models/billboardVideo";
 export async function GET() {
   let content;
   try {
-    connectToDB();
+    await connectToDB();
     const data = await BillboardVideo.find();
     content = data;
     console.log("billboard download process complete");

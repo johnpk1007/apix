@@ -22,8 +22,7 @@ export const billboardArtistUpdate = async () => {
         for (let i = 0; i < billboardArtist.top5songs.length; i++) {
           const idx = titleAristVideos.findIndex(
             (titleAristVideo) =>
-              //   titleAristVideo.artist.includes(billboardArtist.artist) &&
-              titleAristVideo.artist === billboardArtist.artist &&
+              titleAristVideo.artist.includes(billboardArtist.artist) &&
               titleAristVideo.title === billboardArtist.top5songs[i].title
           );
           if (idx !== -1) {

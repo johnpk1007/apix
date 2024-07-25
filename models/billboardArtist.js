@@ -20,6 +20,7 @@ const top5songsSchema = new Schema({
 
 const billboardAristSchema = new Schema({
   artist: String,
+  image: String,
   top5songs: [top5songsSchema],
 });
 

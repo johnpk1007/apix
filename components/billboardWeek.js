@@ -4,9 +4,7 @@ import { useContext } from "react";
 import { Context } from "./provider";
 import { BillboardSkeletonText } from "./skeleton";
 
-export const BillboardWeek = () => {
-  const { billboardWeek, setBillboardWeek } = useContext(Context);
-  console.log("billboardWeek.length:", billboardWeek.length);
+export const BillboardWeek = ({ billboardWeek }) => {
   return (
     <div className="flex flex-col justify-center items-end mr-3">
       <div className="font-poppins font-black text-lg">Billboard Hot 100</div>

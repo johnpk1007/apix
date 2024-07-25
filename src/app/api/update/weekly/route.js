@@ -43,16 +43,6 @@ export const GET = async () => {
     });
   }
 
-  //que check process
-  try {
-    await queCheck();
-  } catch (error) {
-    console.error("Error in que check:", error);
-    return new Response(JSON.stringify({ message: "Error in que check" }), {
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-
   //billboard artist scrape process
   try {
     await multipleArtistScrape(data);
@@ -77,6 +67,16 @@ export const GET = async () => {
         headers: { "Content-Type": "application/json" },
       }
     );
+  }
+
+  //que check process
+  try {
+    await queCheck();
+  } catch (error) {
+    console.error("Error in que check:", error);
+    return new Response(JSON.stringify({ message: "Error in que check" }), {
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   // artistTitleVideo process

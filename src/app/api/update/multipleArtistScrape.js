@@ -26,10 +26,10 @@ export async function multipleArtistScrape(data) {
     const bulkOperation = [];
     for (let i = 0; i < newList.length; i++) {
       try {
-        const top5songs = await artistScrape(
+        const result = await artistScrape(
           newList[i].toLowerCase().replace(/ /g, "-")
         );
-        if (top5songs.length === 0) {
+        if (result.top5songs.length === 0) {
           continue;
         }
         const artist = newList[i];
@@ -37,7 +37,8 @@ export async function multipleArtistScrape(data) {
           insertOne: {
             document: {
               artist: artist,
-              top5songs: top5songs,
+              image: result.artistImage,
+              top5songs: result.top5songs,
             },
           },
         };

@@ -8,7 +8,6 @@ export const billboardArtistCheck = async () => {
       },
     },
   });
-  console.log("billboardArtistVideos:", billboardArtistVideos);
   if (billboardArtistVideos.length > 0) {
     return true;
   } else {
