@@ -50,6 +50,14 @@ export default function HomePage() {
   //   fetchWeekly();
   // }, []);
 
+  // // experiment fetch
+  // const fetchExperiment = async () => {
+  //   await fetch("/api/experiment");
+  // };
+  // useEffect(() => {
+  //   fetchExperiment();
+  // }, []);
+
   const callback = (entry) => {
     if (entry[0].isIntersecting) {
       setNum((prevNum) => prevNum + 1);

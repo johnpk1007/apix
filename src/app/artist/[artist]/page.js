@@ -45,12 +45,15 @@ export default function Artist({ params }) {
     <>
       <ArtistNavigation />
       <ExtraArtistNavigation
-        artist={data.artist}
-        image={data.image}
-        length={data.top5songs?.length}
+        artist={data ? data.artist : null}
+        image={data ? data.image : null}
+        length={data ? data.top5songs?.length : null}
       />
       <StickyArtistNavigation />
-      <ArtistCardDeck data={data.top5songs} artist={data.artist} />
+      <ArtistCardDeck
+        data={data ? data.top5songs : null}
+        artist={data ? data.artist : null}
+      />
     </>
   );
 }

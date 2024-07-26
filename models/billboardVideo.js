@@ -1,5 +1,14 @@
 import { Schema, model, models } from "mongoose";
 
+const artistPageSchema = new Schema({
+  artist: {
+    type: String,
+  },
+  page: {
+    type: Boolean,
+  },
+});
+
 const billboardVideoSchema = new Schema({
   this_week: {
     type: Number,
@@ -22,6 +31,7 @@ const billboardVideoSchema = new Schema({
   video: {
     type: String,
   },
+  page: [artistPageSchema],
 });
 
 const BillboardVideo =

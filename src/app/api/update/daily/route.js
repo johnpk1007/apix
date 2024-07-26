@@ -21,7 +21,7 @@ export const GET = async () => {
   const billboardCheckResult = await billboardCheck();
   const billboardArtistCheckResult = await billboardArtistCheck();
 
-  if (billboardCheckResult === true && billboardArtistCheckResult === true) {
+  if (billboardCheckResult === false && billboardArtistCheckResult === false) {
     console.log("nothing to update");
     return new Response(JSON.stringify({ message: "nothing to update" }), {
       headers: { "Content-Type": "application/json" },

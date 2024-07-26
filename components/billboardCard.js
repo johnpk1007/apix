@@ -6,6 +6,7 @@ import {
   BillboardSkeletonNumber,
   BillboardSkeletonText,
 } from "./skeleton";
+import { EditedTitle } from "./editedTitle";
 
 export const BillboardCard = ({ data }) => {
   const stringDot = (str, maxLength) => {
@@ -31,7 +32,7 @@ export const BillboardCard = ({ data }) => {
           <div className="h-[100px]">
             <div className="text-white font-roboto font-base text-2xl mt-3">
               {data ? (
-                stringDot(`${data.title} - ${data.artist}`, 30)
+                stringDot(`${data.title}`, 30)
               ) : (
                 <YoutubeSkeletonText width={300} height={20} />
               )}
@@ -46,7 +47,7 @@ export const BillboardCard = ({ data }) => {
           </div>
         </div>
         <div className="flex w-[calc(100%-450px)]">
-          <div className="w-1/4 h-[200px] flex flex-col justify-center items-start">
+          <div className="w-3/6 h-[200px] flex flex-col justify-center items-start">
             <div className="ml-10">
               <div className="font-poppins font-black text-3xl">
                 {data ? (
@@ -57,24 +58,24 @@ export const BillboardCard = ({ data }) => {
               </div>
               <div className="font-poppins font-light text-3xl">
                 {data ? (
-                  stringDot(`${data.artist}`, 20)
+                  <EditedTitle artist={data.artist} page={data.page} />
                 ) : (
                   <BillboardSkeletonText width={150} height={20} />
                 )}
               </div>
             </div>
           </div>
-          <div className="w-1/4 h-[200px] flex justify-center items-center">
+          <div className="w-1/6 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
               {data ? data.last_week : <BillboardSkeletonNumber />}
             </div>
           </div>
-          <div className="w-1/4 h-[200px] flex justify-center items-center">
+          <div className="w-1/6 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
               {data ? data.peak_pos : <BillboardSkeletonNumber />}
             </div>
           </div>
-          <div className="w-1/4 h-[200px] flex justify-center items-center">
+          <div className="w-1/6 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
               {data ? data.wks_on_chart : <BillboardSkeletonNumber />}
             </div>

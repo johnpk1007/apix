@@ -6,13 +6,13 @@ export const StickyArtistNavigation = () => {
       </div>
       <div className="flex items-end h-full w-[calc(100%-550px)] bg-white">
         <div className="flex flex-row justify-end w-full h-[50px] border-b-2 border-neutral-300">
-          <div className="flex justify-center items-center h-full w-1/4 font-poppins font-black text-2xl text-#8289a1">
+          <div className="flex justify-center items-center h-full w-1/6 font-poppins font-black text-2xl text-#8289a1">
             PEAK POS.
           </div>
-          <div className="flex justify-center items-center h-full w-1/4 font-poppins font-black text-2xl text-#8289a1">
+          <div className="flex justify-center items-center h-full w-1/6 font-poppins font-black text-2xl text-#8289a1">
             PEAK DATE
           </div>
-          <div className="flex justify-center items-center h-full w-1/4 font-poppins font-black text-2xl text-#8289a1">
+          <div className="flex justify-center items-center h-full w-1/6 font-poppins font-black text-2xl text-#8289a1">
             WKS ON CHART
           </div>
         </div>

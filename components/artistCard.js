@@ -31,7 +31,7 @@ export const ArtistCard = ({ data, artist }) => {
           <div className="h-[100px]">
             <div className="text-white font-roboto font-base text-2xl mt-3">
               {data ? (
-                stringDot(`${data.title} - ${artist}`, 30)
+                stringDot(`${data.title}`, 30)
               ) : (
                 <YoutubeSkeletonText width={300} height={20} />
               )}
@@ -46,35 +46,35 @@ export const ArtistCard = ({ data, artist }) => {
           </div>
         </div>
         <div className="flex w-[calc(100%-450px)]">
-          <div className="w-1/4 h-[200px] flex flex-col justify-center items-start">
+          <div className="w-3/6 h-[200px] flex flex-col justify-center items-start">
             <div className="ml-10">
               <div className="font-poppins font-black text-3xl">
                 {data ? (
-                  stringDot(`${data.title}`, 20)
+                  stringDot(`${data.title}`, 30)
                 ) : (
                   <BillboardSkeletonText width={200} height={20} />
                 )}
               </div>
               <div className="font-poppins font-light text-3xl">
                 {data ? (
-                  stringDot(`${artist}`, 20)
+                  stringDot(`${artist}`, 30)
                 ) : (
                   <BillboardSkeletonText width={150} height={20} />
                 )}
               </div>
             </div>
           </div>
-          <div className="w-1/4 h-[200px] flex justify-center items-center">
+          <div className="w-1/6 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
               {data ? data.peak_pos : <BillboardSkeletonNumber />}
             </div>
           </div>
-          <div className="w-1/4 h-[200px] flex justify-center items-center">
+          <div className="w-1/6 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
               {data ? data.peak_date : <BillboardSkeletonNumber />}
             </div>
           </div>
-          <div className="w-1/4 h-[200px] flex justify-center items-center">
+          <div className="w-1/6 h-[200px] flex justify-center items-center">
             <div className="font-poppins font-black text-3xl">
               {data ? data.wks_on_chart : <BillboardSkeletonNumber />}
             </div>

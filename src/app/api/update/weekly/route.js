@@ -7,6 +7,7 @@ import { billboardUpdate } from "../billboardUpdate";
 import { multipleArtistScrape } from "../multipleArtistScrape";
 import { billboardQueInsertion } from "../billboardQueInsertion";
 import { billboardArtistUpdate } from "../billboardArtistUpdate";
+import { billboardMatching } from "../billboardMatching";
 
 export const GET = async () => {
   //connect to DB
@@ -106,6 +107,18 @@ export const GET = async () => {
     console.error("Error in billboardArtistUpdate:", error.message);
     return new Response(
       JSON.stringify({ message: "Error in billboard artist Update" }),
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
+  try {
+    await billboardMatching();
+  } catch (error) {
+    console.error("Error in billboard matching:", error.message);
+    return new Response(
+      JSON.stringify({ message: "Error in billboard matching" }),
       {
         headers: { "Content-Type": "application/json" },
       }
