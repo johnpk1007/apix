@@ -24,7 +24,7 @@ export const EditedTitle = ({ artist, page }) => {
                   key={idx}
                   className="flex font-poppins font-light text-3xl"
                 >
-                  {trimArr[idx - 1]},
+                  {trimArr[idx - 1]}!,
                   {page[Math.floor(idx / 2)].page ? (
                     <LinkButton artist={page[Math.floor(idx / 2)].artist} />
                   ) : (
