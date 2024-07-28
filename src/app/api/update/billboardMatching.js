@@ -6,8 +6,8 @@ export const billboardMatching = async () => {
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
-    const conditions = [",", "Featuring", "&", "X"];
-    const separators = /[,&]|Featuring| X /;
+    const conditions = [",", "Featuring", "&", "X", "x"];
+    const separators = /[,&]|Featuring| X | x /;
     const list = [];
     const newList = [];
     const billboardVideos = await BillboardVideo.find().session(session);
