@@ -9,7 +9,7 @@ export const IconButton = () => {
         className="absolute bg-slate-800/[.5] hover:bg-transparent transition duration-300 mix-blend-multiply"
       />
       <Image
-        src="/images/arrow.png"
+        src="/images/arrow1.png"
         alt="logo"
         width={40}
         height={40}

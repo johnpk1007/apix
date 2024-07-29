@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useState, useContext, useRef, useCallback } from "react";
-import { Context } from "../../components/provider";
 import { stringFromId } from "./stringFromId";
-import { BillboardCard } from "../../components/billboardCard";
 import { BillboardCardPack } from "../../components/billboardCardPack";
-import { root } from "postcss";
 import { Navigation } from "../../components/navigation";
 
 export default function HomePage() {
@@ -15,6 +12,7 @@ export default function HomePage() {
   const [num, setNum] = useState(0);
 
   const target = useRef(null);
+  const roof = useRef(null);
 
   // normal fetch
   const fetchData = async () => {
@@ -65,7 +63,11 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(callback);
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px 0px 500px 0px",
+      threshold: 0,
+    });
     if (target.current) {
       observer.observe(target.current);
     }
@@ -77,12 +79,12 @@ export default function HomePage() {
   }, [target]);
 
   return (
-    <>
+    <div>
       <Navigation billboardWeek={billboardWeek} />
       <div className="mt-[170px] flex flex-col">
         <BillboardCardPack data={data} num={num} />
         <div ref={target}></div>
       </div>
-    </>
+    </div>
   );
 }

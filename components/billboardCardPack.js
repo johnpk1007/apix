@@ -30,11 +30,13 @@ export const BillboardCardPack = ({ data, num }) => {
     }
   }
   useEffect(() => {
-    if (dataArr.length === 10 && num < 10)
-      setRest((prevRest) => {
-        return [...prevRest, dataArr[num]];
-      });
-  }, [num]);
+    if (data.length > 0 && num > 0) {
+      if (dataArr.length === 10 && num < 10)
+        setRest((prevRest) => {
+          return [...prevRest, dataArr[num]];
+        });
+    }
+  }, [data, num]);
 
   return (
     <div>
