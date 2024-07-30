@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import { ArtistCard } from "../../../../components/artistCard";
 import { ArtistNavigation } from "../../../../components/artistNavigation";
 import { ExtraArtistNavigation } from "../../../../components/extraArtistNavigation";
 import { StickyArtistNavigation } from "../../../../components/stickyArtistNavigation";
+import { Context } from "../../../../components/provider";
 
 export default function Artist({ params }) {
+  const { firstCardscrollable, setFfirstCardScrollable } = useContext(Context);
   const [data, setData] = useState([]);
   const fetchArtist = async () => {
     const response = await fetch(`/api/artist/${params.artist}`);
@@ -17,6 +19,7 @@ export default function Artist({ params }) {
 
   useEffect(() => {
     fetchArtist();
+    setFfirstCardScrollable(false);
   }, [params.artist]);
 
   const ArtistCardDeck = ({ data, artist }) => {

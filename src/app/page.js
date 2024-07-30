@@ -1,21 +1,29 @@
 "use client";
 
-import { useEffect, useState, useContext, useRef, useCallback } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { stringFromId } from "./stringFromId";
 import { BillboardCardPack } from "../../components/billboardCardPack";
 import { Navigation } from "../../components/navigation";
+import { Context } from "../../components/provider";
 
 export default function HomePage() {
-  // const { billboardWeek, setBillboardWeek } = useContext(Context);
-  const [data, setData] = useState([]);
+  const { data, setData, setNum, firstCardscrollable } = useContext(Context);
   const [billboardWeek, setBillboardWeek] = useState("");
-  const [num, setNum] = useState(0);
 
-  const target = useRef(null);
-  const roof = useRef(null);
+  const floorTarget = useRef(null);
+  const sessionData =
+    typeof window !== "undefined" ? sessionStorage.getItem("data") : null;
+
+  const setSessionData = () => {
+    console.log("SessionData");
+    const responseJson = JSON.parse(sessionData);
+    setBillboardWeek(stringFromId(responseJson[0]._id));
+    setData(responseJson);
+  };
 
   // normal fetch
   const fetchData = async () => {
+    console.log("SessionData");
     try {
       const response = await fetch("/api/main");
       if (!response.ok) {
@@ -29,7 +37,16 @@ export default function HomePage() {
     }
   };
   useEffect(() => {
-    fetchData();
+    if (data.length === 0) {
+      if (sessionData) {
+        setSessionData();
+        sessionStorage.removeItem("data");
+      } else {
+        fetchData();
+      }
+    } else {
+      setBillboardWeek(stringFromId(data[0]._id));
+    }
   }, []);
 
   // // daily fetch
@@ -58,7 +75,9 @@ export default function HomePage() {
 
   const callback = (entry) => {
     if (entry[0].isIntersecting) {
-      setNum((prevNum) => prevNum + 1);
+      if (firstCardscrollable) {
+        setNum((prevNum) => prevNum + 1);
+      }
     }
   };
 
@@ -68,22 +87,22 @@ export default function HomePage() {
       rootMargin: "0px 0px 500px 0px",
       threshold: 0,
     });
-    if (target.current) {
-      observer.observe(target.current);
+    if (floorTarget.current) {
+      observer.observe(floorTarget.current);
     }
     return () => {
-      if (target.current) {
-        observer.unobserve(target.current);
+      if (floorTarget.current) {
+        observer.unobserve(floorTarget.current);
       }
     };
-  }, [target]);
+  }, [floorTarget, firstCardscrollable]);
 
   return (
     <div>
       <Navigation billboardWeek={billboardWeek} />
       <div className="mt-[170px] flex flex-col">
-        <BillboardCardPack data={data} num={num} />
-        <div ref={target}></div>
+        <BillboardCardPack />
+        <div ref={floorTarget}></div>
       </div>
     </div>
   );

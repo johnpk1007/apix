@@ -1,5 +1,4 @@
 import "./globals.css";
-import { Navigation } from "../../components/navigation";
 import { Poppins, Roboto } from "next/font/google";
 import { Provider } from "../../components/provider";
 
@@ -26,10 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${poppins.variable} ${roboto.variable}`}>
       <body className="relative">
-        <Provider>
-          {/* <Navigation /> */}
-          {children}
-        </Provider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

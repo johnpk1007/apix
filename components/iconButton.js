@@ -3,7 +3,12 @@ import Image from "next/image";
 
 export const IconButton = () => {
   return (
-    <Link href={"/"} className="relative" style={{ width: 40, height: 40 }}>
+    <Link
+      href={"/"}
+      className="relative"
+      style={{ width: 40, height: 40 }}
+      scroll={false}
+    >
       <div
         style={{ width: 40, height: 40 }}
         className="absolute bg-slate-800/[.5] hover:bg-transparent transition duration-300 mix-blend-multiply"
