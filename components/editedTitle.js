@@ -46,14 +46,20 @@ export const EditedTitle = ({ artist, page }) => {
         {newArr.map((newArrItem, idx) => {
           if (newArrItem.length === 1) {
             return (
-              <div key={idx} className="flex font-poppins font-light text-3xl">
-                {newArrItem[0]}{" "}
+              <div
+                key={idx}
+                className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl  relative"
+              >
+                {newArrItem[0]}
                 {page[idx].page ? <LinkButton artist={page[idx].artist} /> : ""}
               </div>
             );
           } else {
             return (
-              <div key={idx} className="flex font-poppins font-light text-3xl">
+              <div
+                key={idx}
+                className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl relative"
+              >
                 {newArrItem[0]}
                 {newArrItem[0] === "Featuring" ||
                 newArrItem[0] === "&" ||
@@ -71,7 +77,7 @@ export const EditedTitle = ({ artist, page }) => {
     );
   } else {
     return (
-      <div className="flex font-poppins font-light text-3xl">
+      <div className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl relative">
         {artist}
         {page[0].page ? <LinkButton artist={page[0].artist} /> : ""}
       </div>

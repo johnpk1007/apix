@@ -10,9 +10,9 @@ export function Video({ src }) {
   };
 
   return (
-    <div className="w-[350px] h-[200px] relative">
+    <div className="relative h-[178.6px] w-[321px]">
       {loading ? (
-        <div className="w-[350px] h-[200px] absolute top-0 left-0">
+        <div className="absolute top-0 left-0 bg-black w-full h-full">
           <YoutubeSkeletonVideo />
         </div>
       ) : (

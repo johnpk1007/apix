@@ -17,75 +17,95 @@ export const BillboardCard = ({ data }) => {
   };
 
   return (
-    <div
-      id={`${data?.title?.replace(/ /g, "-")}-${data?.artist?.replace(
-        / /g,
-        "-"
-      )}`}
-    >
-      <div className="flex w-full h-[300px]">
-        <div className="w-[100px] h-full bg-black border-black border-2" />
-        <div className="flex justify-start w-[calc(100%-100px)] h-full border-b-2 border-neutral-300">
-          <div className="flex flex-col w-[450px] bg-black">
-            <div className="flex h-[200px]">
-              <div className="h-full w-[350px]">
-                {data ? <Video src={data.video} /> : <YoutubeSkeletonVideo />}
+    <div className="xxs:h-[350px] xs:h-[270px] xl:h-[300px] flex flex-col h-full w-full border-b-2 border-neutral-300 max-w-screen-xl bg-black">
+      <div className="flex xxs:flex-col xs:flex-row xs:justify-start h-full w-full xxs:items-center xs:items-stretch">
+        <div className="xxs:w-[321px] md:w-[370px] flex flex-col h-full bg-black items-start">
+          <div className="flex w-full h-2/3 xs:ml-5 md:ml-0 xxs:mt-5 md:mt-0">
+            {data ? (
+              <Video src={data.video} />
+            ) : (
+              <div className="h-[178.6px] w-[321px]">
+                <YoutubeSkeletonVideo />
               </div>
-              <div className="h-full w-[100px] flex justify-center items-center text-white font-poppins font-bold text-4xl">
-                {data ? data.this_week : <YoutubeSkeletonNumber />}
-              </div>
+            )}
+
+            <div className="xxs:hidden md:flex h-full flex-1 justify-center items-center text-white font-poppins font-bold md:text-xl xl:text-4xl">
+              {data ? data.this_week : <YoutubeSkeletonNumber />}
             </div>
-            <div className="h-[100px]">
-              <div className="text-white font-roboto font-base text-2xl mt-3">
+          </div>
+          <div className="h-1/3 w-full relative">
+            <div className="text-white font-roboto font-base md:text-base lg:text-xl xl:text-2xl mt-3 ml-2 xxs:hidden md:block">
+              {data ? (
+                stringDot(`${data.title}`, 30)
+              ) : (
+                <YoutubeSkeletonText width={300} height={20} />
+              )}
+            </div>
+            <div className="text-neutral-500 font-roboto font-base md:text-sm lg:text-base text-xl ml-2 xxs:hidden md:block">
+              {data ? (
+                stringDot(`${data.artist}`, 40)
+              ) : (
+                <YoutubeSkeletonText width={150} height={20} />
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-1 xxs:bg-black md:bg-white xxs:w-full">
+          <div className="xxs:w-full md:w-3/6 h-[200px] flex flex-col xxs:justify-start xs:justify-center items-start">
+            <div className="xxs:pl-16 sm:pl-20 md:pl-10 xl:pl-20 xxs:pt-2 xs:pt-0 w-full">
+              <div className="font-poppins font-black lg:text-2xl xl:text-3xl xxs:text-white md:text-black">
                 {data ? (
-                  stringDot(`${data.title}`, 30)
+                  stringDot(`${data.title}`, 20)
                 ) : (
-                  <YoutubeSkeletonText width={300} height={20} />
+                  <BillboardSkeletonText width={200} height={20} />
                 )}
               </div>
-              <div className="text-neutral-500 font-roboto font-base text-xl">
+              <div className="font-poppins font-light xxs:text-white md:text-black">
                 {data ? (
-                  stringDot(`${data.artist}`, 40)
+                  <EditedTitle artist={data.artist} page={data.page} />
                 ) : (
-                  <YoutubeSkeletonText width={150} height={20} />
+                  <BillboardSkeletonText width={150} height={20} />
                 )}
               </div>
             </div>
           </div>
-          <div className="flex w-[calc(100%-450px)]">
-            <div className="w-3/6 h-[200px] flex flex-col justify-center items-start">
-              <div className="ml-10">
-                <div className="font-poppins font-black text-3xl">
-                  {data ? (
-                    stringDot(`${data.title}`, 20)
-                  ) : (
-                    <BillboardSkeletonText width={200} height={20} />
-                  )}
-                </div>
-                <div className="font-poppins font-light text-3xl">
-                  {data ? (
-                    <EditedTitle artist={data.artist} page={data.page} />
-                  ) : (
-                    <BillboardSkeletonText width={150} height={20} />
-                  )}
-                </div>
-              </div>
+          <div className="w-1/6 h-[200px] justify-center items-center xxs:hidden md:flex">
+            <div className="font-poppins font-black lg:text-2xl xl:text-3xl">
+              {data ? data.last_week : <BillboardSkeletonNumber />}
             </div>
-            <div className="w-1/6 h-[200px] flex justify-center items-center">
-              <div className="font-poppins font-black text-3xl">
-                {data ? data.last_week : <BillboardSkeletonNumber />}
-              </div>
+          </div>
+          <div className="w-1/6 h-[200px] justify-center items-center xxs:hidden md:flex">
+            <div className="font-poppins font-black lg:text-2xl xl:text-3xl">
+              {data ? data.peak_pos : <BillboardSkeletonNumber />}
             </div>
-            <div className="w-1/6 h-[200px] flex justify-center items-center">
-              <div className="font-poppins font-black text-3xl">
-                {data ? data.peak_pos : <BillboardSkeletonNumber />}
-              </div>
+          </div>
+          <div className="w-1/6 h-[200px] justify-center items-center xxs:hidden md:flex">
+            <div className="font-poppins font-black lg:text-2xl xl:text-3xl">
+              {data ? data.wks_on_chart : <BillboardSkeletonNumber />}
             </div>
-            <div className="w-1/6 h-[200px] flex justify-center items-center">
-              <div className="font-poppins font-black text-3xl">
-                {data ? data.wks_on_chart : <BillboardSkeletonNumber />}
-              </div>
-            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full h-full text-white xxs:flex md:hidden">
+        <div className="w-1/4 justify-center items-center flex">
+          <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
+            {data ? data.this_week : <BillboardSkeletonNumber />}
+          </div>
+        </div>
+        <div className="w-1/4 justify-center items-center flex">
+          <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
+            {data ? data.last_week : <BillboardSkeletonNumber />}
+          </div>
+        </div>
+        <div className="w-1/4 justify-center items-center flex">
+          <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
+            {data ? data.peak_pos : <BillboardSkeletonNumber />}
+          </div>
+        </div>
+        <div className="w-1/4 justify-center items-center flex">
+          <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
+            {data ? data.wks_on_chart : <BillboardSkeletonNumber />}
           </div>
         </div>
       </div>

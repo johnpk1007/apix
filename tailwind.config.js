@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        mdlg: "896px",
+        xs: "470px",
+        xxs: "321px",
+      },
       fontFamily: {
         poppins: ["var(--font-poppins)"],
         roboto: ["var(--font-roboto)"],

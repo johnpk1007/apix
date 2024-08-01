@@ -98,11 +98,21 @@ export default function HomePage() {
   }, [floorTarget, firstCardscrollable]);
 
   return (
-    <div>
-      <Navigation billboardWeek={billboardWeek} />
-      <div className="mt-[170px] flex flex-col">
-        <BillboardCardPack />
-        <div ref={floorTarget}></div>
+    <div className="relative">
+      <div className="flex w-full items-stretch sm:h-[150px] xl:h-[170px] fixed top-0 z-10 border-b-2 border-neutral-300">
+        <div className="bg-black grow"></div>
+        <div className="container relative max-w-screen-xl">
+          <Navigation billboardWeek={billboardWeek} />
+        </div>
+        <div className="grow"></div>
+      </div>
+      <div className="flex">
+        <div className="bg-black flex-1 top-0 bottom-0"></div>
+        <div className="container flex flex-col xxs:mt-[150px] xl:mt-[170px] max-w-screen-xl">
+          <BillboardCardPack />
+          <div ref={floorTarget}></div>
+        </div>
+        <div className="flex-1 top-0 bottom-0"></div>
       </div>
     </div>
   );
