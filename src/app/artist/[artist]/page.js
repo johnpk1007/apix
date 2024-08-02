@@ -32,7 +32,7 @@ export default function Artist({ params }) {
       arr = newArr;
     }
     return (
-      <div>
+      <div className="w-full">
         {arr.map((i) => (
           <ArtistCard
             key={i}
@@ -45,18 +45,42 @@ export default function Artist({ params }) {
   };
 
   return (
-    <>
-      <ArtistNavigation />
-      <ExtraArtistNavigation
-        artist={data ? data.artist : null}
-        image={data ? data.image : null}
-        length={data ? data.top5songs?.length : null}
-      />
-      <StickyArtistNavigation />
-      <ArtistCardDeck
-        data={data ? data.top5songs : null}
-        artist={data ? data.artist : null}
-      />
-    </>
+    <div className="relative">
+      <div className="flex w-full items-stretch h-[120px] fixed top-0 z-10">
+        <div className="bg-black grow"></div>
+        <div className="container relative max-w-screen-xl">
+          <ArtistNavigation />
+        </div>
+        <div className="grow"></div>
+      </div>
+      <div className="flex w-full xxs:mt-[50px] lg:mt-[120px]">
+        <div className="bg-black flex-1 top-0 bottom-0"></div>
+        <div className="container max-w-screen-xl">
+          <ExtraArtistNavigation
+            artist={data ? data.artist : null}
+            image={data ? data.image : null}
+            length={data ? data.top5songs?.length : null}
+          />
+        </div>
+        <div className="flex-1 top-0 bottom-0"></div>
+      </div>
+      <div className="sticky flex xxs:top-[50px] md:top-[120px] z-10">
+        <div className="bg-black flex-1 top-0 bottom-0"></div>
+        <div className="container max-w-screen-xl">
+          <StickyArtistNavigation />
+        </div>
+        <div className="grow top-0 bottom-0"></div>
+      </div>
+      <div className="flex">
+        <div className="bg-black flex-1 top-0 bottom-0"></div>
+        <div className="container flex max-w-screen-xl">
+          <ArtistCardDeck
+            data={data ? data.top5songs : null}
+            artist={data ? data.artist : null}
+          />
+        </div>
+        <div className="flex-1 top-0 bottom-0"></div>
+      </div>
+    </div>
   );
 }

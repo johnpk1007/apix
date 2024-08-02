@@ -17,7 +17,7 @@ export const BillboardCard = ({ data }) => {
   };
 
   return (
-    <div className="xxs:min-h-[350px] xs:h-[270px] xl:h-[300px] flex flex-col h-full w-full border-b-2 xxs:border-black xs:border-neutral-300 max-w-screen-xl bg-black">
+    <div className="xxs:min-h-[350px] xxs:min-h-min xs: xs:h-[270px] xl:h-[300px] flex flex-col h-full w-full border-b-2 xxs:border-black sm:border-neutral-300 max-w-screen-xl bg-black">
       <div className="flex xxs:flex-col xs:flex-row xs:justify-start h-full w-full xxs:items-center xs:items-stretch">
         <div className="xxs:w-[321px] md:w-[370px] flex flex-col h-full bg-black items-start">
           <div className="flex w-full h-2/3 xs:ml-5 md:ml-0 xxs:mt-5 md:mt-0">
