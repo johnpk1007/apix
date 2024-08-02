@@ -4,7 +4,7 @@ export async function GET() {
   let content;
   try {
     await connectToDB();
-    const data = await BillboardVideo.find();
+    const data = await BillboardVideo.find().sort({ this_week: 1 });
     content = data;
     console.log("billboard download process complete");
   } catch (error) {

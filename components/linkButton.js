@@ -15,7 +15,7 @@ export const LinkButton = ({ artist }) => {
   };
   return (
     <div
-      className="absolute xs:left-[-15px] sm:left-[-25px] lg:left-[-30px] font-medium text-#8289a1 hover:text-slate-400 duration-300 cursor-pointer"
+      className="absolute xxs:left-[-15px] sm:left-[-25px] lg:left-[-30px] font-medium text-#8289a1 hover:text-slate-400 duration-300 cursor-pointer"
       onClick={handleClick}
     >
       +

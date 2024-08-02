@@ -17,7 +17,7 @@ export const BillboardCard = ({ data }) => {
   };
 
   return (
-    <div className="xxs:h-[350px] xs:h-[270px] xl:h-[300px] flex flex-col h-full w-full border-b-2 border-neutral-300 max-w-screen-xl bg-black">
+    <div className="xxs:min-h-[350px] xs:h-[270px] xl:h-[300px] flex flex-col h-full w-full border-b-2 xxs:border-black xs:border-neutral-300 max-w-screen-xl bg-black">
       <div className="flex xxs:flex-col xs:flex-row xs:justify-start h-full w-full xxs:items-center xs:items-stretch">
         <div className="xxs:w-[321px] md:w-[370px] flex flex-col h-full bg-black items-start">
           <div className="flex w-full h-2/3 xs:ml-5 md:ml-0 xxs:mt-5 md:mt-0">
@@ -51,21 +51,27 @@ export const BillboardCard = ({ data }) => {
           </div>
         </div>
         <div className="flex flex-1 xxs:bg-black md:bg-white xxs:w-full">
-          <div className="xxs:w-full md:w-3/6 h-[200px] flex flex-col xxs:justify-start xs:justify-center items-start">
-            <div className="xxs:pl-16 sm:pl-20 md:pl-10 xl:pl-20 xxs:pt-2 xs:pt-0 w-full">
-              <div className="font-poppins font-black lg:text-2xl xl:text-3xl xxs:text-white md:text-black">
-                {data ? (
-                  stringDot(`${data.title}`, 20)
-                ) : (
-                  <BillboardSkeletonText width={200} height={20} />
-                )}
-              </div>
-              <div className="font-poppins font-light xxs:text-white md:text-black">
-                {data ? (
-                  <EditedTitle artist={data.artist} page={data.page} />
-                ) : (
-                  <BillboardSkeletonText width={150} height={20} />
-                )}
+          <div className="xxs:w-full md:w-3/6 xxs:h-min xs:h-[200px] flex flex-col xxs:justify-start xs:justify-center items-start xxs:pl-10 xxs:pl-15 sm:pl-20 md:pl-10">
+            <div style={{ height: `${data?.page.length * 30 + 30}px` }}>
+              <div className="xl:pl-20 xxs:pt-2 xs:pt-0 w-full">
+                <div className="font-poppins font-black lg:text-2xl xl:text-3xl xxs:text-white md:text-black w-full">
+                  {data ? (
+                    stringDot(`${data.title}`, 20)
+                  ) : (
+                    <div className="xxs:w-[170px] xs:w-[100px] md:w-[170px] xxs:h-[18px] lg:h-[23px]">
+                      <BillboardSkeletonText />
+                    </div>
+                  )}
+                </div>
+                <div className="font-poppins font-light xxs:text-white md:text-black">
+                  {data ? (
+                    <EditedTitle artist={data.artist} page={data.page} />
+                  ) : (
+                    <div className="xxs:w-[140px] xs:w-[70px] md:w-[140px] mt-4 xxs:h-[15px] lg:h-[20px]">
+                      <BillboardSkeletonText />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -95,7 +101,15 @@ export const BillboardCard = ({ data }) => {
         </div>
         <div className="w-1/4 justify-center items-center flex">
           <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
-            {data ? data.last_week : <BillboardSkeletonNumber />}
+            {data ? (
+              data.last_week !== 0 ? (
+                data.last_week
+              ) : (
+                "NEW"
+              )
+            ) : (
+              <BillboardSkeletonNumber />
+            )}
           </div>
         </div>
         <div className="w-1/4 justify-center items-center flex">
