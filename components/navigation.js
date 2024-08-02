@@ -44,17 +44,17 @@ export const Navigation = ({ billboardWeek }) => {
             </div>
           </div>
         </div>
-        <div className="w-full h-1/5 border-b-2 border-neutral-300 flex">
-          <div className="xxs:hidden xs:flex md:hidden justify-center items-center h-full xxs:w-1/2 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white text-center pb-6 boder-2">
+        <div className="w-full h-1/5 border-b-2 border-neutral-300 flex pb-8">
+          {/* <div className="xxs:hidden xs:flex md:hidden justify-center items-center h-full xxs:w-1/2 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white text-center pb-6 boder-2">
             THIS WEEK
+          </div> */}
+          <div className="xxs:flex md:hidden justify-center items-center h-full xxs:w-1/2 font-poppins xxs:font-bold md:font-black xxs:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white pb-6 whitespace-pre-wrap">
+            <div className="flex justify-center items-center text-center border-2 w-12 h-12">{`THIS\nWEEK`}</div>
           </div>
-          <div className="xxs:flex xs:hidden justify-center items-center h-full xxs:w-1/2 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white text-center pb-6 whitespace-pre-wrap">
-            {`THIS\nWEEK`}
-          </div>
-          <div className="xxs:hidden xs:flex md:hidden  justify-center items-center h-full xxs:w-1/2 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white text-center pb-6">
+          {/* <div className="xxs:hidden xs:flex md:hidden  justify-center items-center h-full xxs:w-1/2 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white text-center pb-6">
             LAST WEEK
-          </div>
-          <div className="xxs:flex xs:hidden justify-center items-center h-full xxs:w-1/2 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white text-center pb-6 whitespace-pre-wrap">
+          </div> */}
+          <div className="xxs:flex md:hidden justify-center items-center h-full xxs:w-1/2 font-poppins xxs:font-bold md:font-black xxs:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-white text-center pb-6 whitespace-pre-wrap">
             {`LAST\nWEEK`}
           </div>
         </div>
@@ -79,17 +79,23 @@ export const Navigation = ({ billboardWeek }) => {
           </div>
           <BillboardWeek billboardWeek={billboardWeek} />
         </div>
-        <div className="flex flex-row justify-end w-full h-1/5 border-b-2 border-neutral-300">
+        <div className="flex flex-row justify-end w-full h-1/5 border-b-2 border-neutral-300 pb-8">
           <div className="justify-center items-center h-full w-1/6 font-poppins font-black xxs:text-sm lg:text-base xl:text-xl 2xl:text-2xl text-#8289a1 text-center pb-6 xxs:hidden md:flex">
             LAST WEEK
           </div>
-          <div className="xxs:hidden xs:flex justify-center items-center h-full xxs:w-1/2 md:w-1/6 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl xxs:text-white md:text-#8289a1 text-center pb-6">
+          {/* <div className="xxs:hidden xs:flex justify-center items-center h-full xxs:w-1/2 md:w-1/6 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl xxs:text-white md:text-#8289a1 text-center pb-6">
             PEAK POS.
-          </div>
-          <div className="xxs:flex xs:hidden justify-center items-center h-full xxs:w-1/2 md:w-1/6 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl xxs:text-white md:text-#8289a1 text-center pb-6 whitespace-pre-wrap">
+          </div> */}
+          <div className="xxs:flex md:hidden justify-center items-center h-full xxs:w-1/2 md:w-1/6 font-poppins xxs:font-bold md:font-black xxs:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl xxs:text-white md:text-#8289a1 text-center pb-6 whitespace-pre-wrap">
             {`PEAK\nPOS.`}
           </div>
-          <div className="flex justify-center items-center h-full xxs:w-1/2 md:w-1/6 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl xxs:text-white md:text-#8289a1 text-center pb-6">
+          {/* <div className="flex justify-center items-center h-full xxs:w-1/2 md:w-1/6 font-poppins font-black md:text-sm lg:text-base xl:text-xl 2xl:text-2xl xxs:text-white md:text-#8289a1 text-center pb-6">
+            WKS ON CHART
+          </div> */}
+          <div className="xxs:flex md:hidden justify-center items-center h-full xxs:w-1/2 md:w-1/6 font-poppins xxs:font-bold md:font-black xxs:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl xxs:text-white md:text-#8289a1 text-center pb-6 whitespace-pre-wrap">
+            {`WKS ON\nCHART`}
+          </div>
+          <div className="xxs:hidden md:flex justify-center items-center h-full xxs:w-1/2 md:w-1/6 font-poppins xxs:font-bold md:font-black xxs:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl xxs:text-white md:text-#8289a1 text-center pb-6">
             WKS ON CHART
           </div>
         </div>

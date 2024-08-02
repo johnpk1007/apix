@@ -95,12 +95,14 @@ export const BillboardCard = ({ data }) => {
 
       <div className="w-full h-full text-white xxs:flex md:hidden">
         <div className="w-1/4 justify-center items-center flex">
-          <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
-            {data ? data.this_week : <BillboardSkeletonNumber />}
+          <div className="font-poppins font-black xxs:text-xl lg:text-2xl xl:text-3xl text-white">
+            <div className="flex justify-center items-center text-center border-2 w-12 h-12">
+              {data ? data.this_week : <BillboardSkeletonNumber />}
+            </div>
           </div>
         </div>
         <div className="w-1/4 justify-center items-center flex">
-          <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
+          <div className="font-poppins font-black xxs:text-xl lg:text-2xl xl:text-3xl text-white">
             {data ? (
               data.last_week !== 0 ? (
                 data.last_week
@@ -113,12 +115,12 @@ export const BillboardCard = ({ data }) => {
           </div>
         </div>
         <div className="w-1/4 justify-center items-center flex">
-          <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
+          <div className="font-poppins font-black xxs:text-xl lg:text-2xl xl:text-3xl text-white">
             {data ? data.peak_pos : <BillboardSkeletonNumber />}
           </div>
         </div>
         <div className="w-1/4 justify-center items-center flex">
-          <div className="font-poppins font-black lg:text-2xl xl:text-3xl text-white">
+          <div className="font-poppins font-black xxs:text-xl lg:text-2xl xl:text-3xl text-white">
             {data ? data.wks_on_chart : <BillboardSkeletonNumber />}
           </div>
         </div>
