@@ -16,26 +16,23 @@ export const ArtistCard = ({ data, artist }) => {
   };
 
   return (
-    <div className="flex flex-col w-full xxs:h-[350px] xs:h-[270px] xl:h-[300px] max-w-screen-xl border-b-2 xxs:border-black sm:border-neutral-300">
-      <div className="flex justify-center bg-black">
+    <div className="flex flex-col w-full xxs:h-[320px] md:h-[270px] xl:h-[300px] max-w-screen-xl border-b-2 xxs:border-black md:border-neutral-300">
+      <div className="flex justify-center bg-black xxs:h-5/7 md:h-full">
         <div className="flex flex-col xxs:w-[321px] md:w-[370px] bg-black">
-          <div className="flex h-[200px]">
+          <div className="flex h-2/3">
             <div className="h-full w-[350px]">
               {data ? <Video src={data.video} /> : <YoutubeSkeletonVideo />}
             </div>
-            <div className="h-full w-[100px] flex justify-center items-center text-white font-poppins font-bold text-4xl">
-              {data ? data.this_week : <YoutubeSkeletonNumber />}
-            </div>
           </div>
-          <div className="h-[100px] xxs:block xs:hidden md:block">
-            <div className="font-poppins font-black lg:text-2xl xl:text-3xl xxs:text-white md:text-black text-pretty mt-3 ml-2 ">
+          <div className="h-1/3 xxs:block xs:hidden md:block">
+            <div className="font-roboto font-base md:text-base lg:text-xl xl:text-2xl text-white text-pretty mt-5 ml-2 ">
               {data ? (
                 stringDot(`${data.title}`, 30)
               ) : (
                 <YoutubeSkeletonText width={300} height={20} />
               )}
             </div>
-            <div className="font-poppins font-light lg:text-2xl xl:text-3xl xxs:text-white md:text-black ml-2">
+            <div className="text-neutral-500 font-roboto font-base md:text-sm lg:text-base text-xl ml-2">
               {data ? (
                 stringDot(`${artist}`, 40)
               ) : (
@@ -106,7 +103,7 @@ export const ArtistCard = ({ data, artist }) => {
           </div>
         </div>
       </div>
-      <div className="w-full h-full text-white xxs:flex md:hidden bg-black">
+      <div className="w-full h-full text-white xxs:flex md:hidden bg-black h-2/7">
         <div className="w-1/3 justify-center items-center flex">
           <div className="font-poppins font-black xxs:text-xl lg:text-2xl xl:text-3xl text-white">
             <div className="flex justify-center items-center text-center border-2 w-12 h-12">

@@ -1,5 +1,6 @@
 "use client";
 
+import { notFound } from "next/navigation";
 import { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import { ArtistCard } from "../../../../components/artistCard";
@@ -19,8 +20,13 @@ export default function Artist({ params }) {
 
   useEffect(() => {
     fetchArtist();
+
     setFfirstCardScrollable(false);
   }, [params.artist]);
+
+  if (!data) {
+    notFound();
+  }
 
   const ArtistCardDeck = ({ data, artist }) => {
     let arr = [0, 1, 2, 3, 4];
