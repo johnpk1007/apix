@@ -1,10 +1,14 @@
 import Image from "next/image";
+import { IconButton } from "./iconButton";
 
 export const ArtistNavigation = () => {
   return (
     <nav className="flex flex-row w-full xxs:h-[50px] lg:h-[120px] fixed top-0 z-10 max-w-screen-xl">
       <div className="flex flex-row justify-end items-center xxs:w-[50%] md:w-[370px] h-full bg-black relative">
-        <div className="flex flex-row items-center xxs:mr-[50px] md:mr-[80px] lg:mr-[100px] xl:mr-[120px]">
+        <div className="absolute xxs:ml-2 xs:ml-5 xl:ml-0 left-0">
+          <IconButton />
+        </div>
+        <div className="flex flex-row items-center xxs:mr-[50px] md:mr-[80px]">
           <div className="relative xxs:w-[30px] sm:w-[40px] lg:w-[49px] xl:w-[63px] aspect-[7/5] md:mr-1 lg:mr-2">
             <Image
               src="/images/youtube_logo_drawing.png"
@@ -42,7 +46,7 @@ export const ArtistNavigation = () => {
         </div>
       </div>
       <div className="flex items-center h-full flex-1 xxs:bg-black md:bg-white">
-        <div className="relative xxs:hidden md:block md:w-[162px] lg:w-[193px] xl:w-[249px] lg:ml-[100px] aspect-[5/1] md:ml-[80px] lg:ml-[100px] xl:ml-[120px]">
+        <div className="relative xxs:hidden md:block md:w-[162px] lg:w-[193px] xl:w-[249px] lg:ml-[100px] aspect-[5/1] md:ml-[80px]">
           <Image
             src="/images/billboard_logo_text.png"
             alt="logo"
