@@ -77,7 +77,15 @@ export const BillboardCard = ({ data }) => {
           </div>
           <div className="w-1/6 h-[200px] justify-center items-center xxs:hidden md:flex">
             <div className="font-poppins font-black lg:text-2xl xl:text-3xl">
-              {data ? data.last_week : <BillboardSkeletonNumber />}
+              {data ? (
+                data.last_week !== 0 ? (
+                  data.last_week
+                ) : (
+                  "NEW"
+                )
+              ) : (
+                <BillboardSkeletonNumber />
+              )}
             </div>
           </div>
           <div className="w-1/6 h-[200px] justify-center items-center xxs:hidden md:flex">
