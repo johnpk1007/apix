@@ -49,30 +49,6 @@ export default function HomePage() {
     }
   }, []);
 
-  // // daily fetch
-  // const fetchDaily = async () => {
-  //   await fetch("/api/update/daily");
-  // };
-  // useEffect(() => {
-  //   fetchDaily();
-  // }, []);
-
-  // weekly fetch
-  const fetchWeekly = async () => {
-    await fetch("/api/update/weekly");
-  };
-  useEffect(() => {
-    fetchWeekly();
-  }, []);
-
-  // // experiment fetch
-  // const fetchExperiment = async () => {
-  //   await fetch("/api/experiment");
-  // };
-  // useEffect(() => {
-  //   fetchExperiment();
-  // }, []);
-
   const callback = (entry) => {
     if (entry[0].isIntersecting) {
       if (firstCardscrollable) {
