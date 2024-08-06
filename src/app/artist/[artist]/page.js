@@ -52,7 +52,7 @@ export default function Artist({ params }) {
 
   return (
     <div className="relative">
-      <div className="flex w-full items-stretch h-[120px] fixed top-0 z-10">
+      <div className="flex w-full items-stretch xxs:h-[50px] lg:h-[120px] fixed top-0 z-10">
         <div className="bg-black grow"></div>
         <div className="container relative max-w-screen-xl">
           <ArtistNavigation />
@@ -70,7 +70,7 @@ export default function Artist({ params }) {
         </div>
         <div className="flex-1 top-0 bottom-0"></div>
       </div>
-      <div className="sticky flex xxs:top-[50px] md:top-[120px] z-10">
+      <div className="sticky flex xxs:top-[50px] lg:top-[120px] z-10">
         <div className="bg-black flex-1 top-0 bottom-0"></div>
         <div className="container max-w-screen-xl">
           <StickyArtistNavigation />
