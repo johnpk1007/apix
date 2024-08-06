@@ -57,13 +57,13 @@ export default function HomePage() {
   //   fetchDaily();
   // }, []);
 
-  // // weekly fetch
-  // const fetchWeekly = async () => {
-  //   await fetch("/api/update/weekly");
-  // };
-  // useEffect(() => {
-  //   fetchWeekly();
-  // }, []);
+  // weekly fetch
+  const fetchWeekly = async () => {
+    await fetch("/api/update/weekly");
+  };
+  useEffect(() => {
+    fetchWeekly();
+  }, []);
 
   // // experiment fetch
   // const fetchExperiment = async () => {

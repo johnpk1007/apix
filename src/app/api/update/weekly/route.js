@@ -8,6 +8,7 @@ import { multipleArtistScrape } from "../multipleArtistScrape";
 import { billboardQueInsertion } from "../billboardQueInsertion";
 import { billboardArtistUpdate } from "../billboardArtistUpdate";
 import { billboardMatching } from "../billboardMatching";
+import { billboardInsertionBeforeCheck } from "../billboardInsertionBeforeCheck";
 
 export const GET = async () => {
   //connect to DB
@@ -24,6 +25,13 @@ export const GET = async () => {
   let data;
   try {
     data = await billboardInsertion();
+    const result = await billboardInsertionBeforeCheck(data);
+    if (result) {
+      console.log("Nothing to update");
+      return new Response(JSON.stringify({ message: "Nothing to update" }), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
   } catch (error) {
     console.error("Error in scraping & billboard insertion:", error);
     return new Response(
