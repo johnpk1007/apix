@@ -1,4 +1,3 @@
-import { LinkButton } from "./linkButton";
 import { ArtistLinkButton } from "./artistLinkButton";
 
 const conditions = [",", "Featuring", "&", "X", "x"];
@@ -52,7 +51,12 @@ export const EditedTitle = ({ artist, page }) => {
                 className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl  relative"
               >
                 {page[idx].page ? (
-                  <ArtistLinkButton artist={newArrItem[0]} page={page[idx]} />
+                  <div>
+                    <div className="absolute xxs:left-[-15px] sm:left-[-25px] lg:left-[-30px] xxs:w-[15px] sm:w-[25px] lg:w-[30px] top-0 rounded-l-lg top-0 bottom-0 bg-inherit">
+                      +
+                    </div>
+                    <ArtistLinkButton artist={newArrItem[0]} />
+                  </div>
                 ) : (
                   newArrItem[0]
                 )}
@@ -65,11 +69,15 @@ export const EditedTitle = ({ artist, page }) => {
                 className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl relative"
               >
                 {page[idx].page ? (
-                  <ArtistLinkButton
-                    artist={newArrItem[1]}
-                    page={page[idx]}
-                    extra={newArrItem[0]}
-                  />
+                  <div>
+                    <div className="absolute xxs:left-[-15px] sm:left-[-25px] lg:left-[-30px] xxs:w-[15px] sm:w-[25px] lg:w-[30px] top-0 rounded-l-lg top-0 bottom-0 bg-inherit">
+                      +
+                    </div>
+                    <ArtistLinkButton
+                      artist={newArrItem[1]}
+                      extra={newArrItem[0]}
+                    />
+                  </div>
                 ) : (
                   <div>
                     {newArrItem[0]}
@@ -92,7 +100,12 @@ export const EditedTitle = ({ artist, page }) => {
     return (
       <div className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl relative">
         {page[0].page ? (
-          <ArtistLinkButton artist={artist} page={page[0]} />
+          <div>
+            <div className="absolute xxs:left-[-15px] sm:left-[-25px] lg:left-[-30px] xxs:w-[15px] sm:w-[25px] lg:w-[30px] top-0 rounded-l-lg top-0 bottom-0 bg-inherit">
+              +
+            </div>
+            <ArtistLinkButton artist={artist} />
+          </div>
         ) : (
           artist
         )}

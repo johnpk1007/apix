@@ -1,13 +1,27 @@
 "use client";
 
 import { Context } from "./provider";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export const ArtistLinkButton = ({ artist, page, extra }) => {
+export const ArtistLinkButton = ({ artist, extra }) => {
+  const spanRef = useRef(null);
   const { data, num } = useContext(Context);
   const router = useRouter();
-  const handleClick = () => {
+  const [left, setLeft] = useState(0);
+  const [top, setTop] = useState(0);
+
+  const createRipple = (event) => {
+    if (spanRef.current.classList.contains("ripple")) {
+      spanRef.current.classList.remove("ripple");
+    }
+    setLeft(event.clientX - event.target.getBoundingClientRect().left - 10);
+    setTop(event.clientY - event.target.getBoundingClientRect().top - 10);
+    spanRef.current.classList.add("ripple");
+  };
+
+  const handleClick = (event) => {
+    createRipple(event);
     sessionStorage.setItem("data", JSON.stringify(data));
     sessionStorage.setItem("height", `${window.scrollY}`);
     sessionStorage.setItem("num", `${num}`);
@@ -16,20 +30,18 @@ export const ArtistLinkButton = ({ artist, page, extra }) => {
   return (
     <div
       onClick={handleClick}
-      className="rounded-r-lg xxs:hover:bg-slate-800 md:hover:bg-slate-100 cursor-pointer"
+      className="rounded-lg xxs:hover:bg-slate-800 md:hover:bg-slate-100 cursor-pointer relative overflow-hidden"
     >
       {extra}
       {extra === "Featuring" || extra === "&" || extra === "X" || extra === "x"
         ? " "
         : ""}
       {artist}
-      {page.page ? (
-        <div className="absolute xxs:left-[-15px] sm:left-[-25px] lg:left-[-30px] xxs:w-[15px] sm:w-[25px] lg:w-[30px] top-0 rounded-l-lg top-0 bottom-0 bg-inherit">
-          +
-        </div>
-      ) : (
-        ""
-      )}
+      <span
+        ref={spanRef}
+        className="w-[20px] h-[20px]"
+        style={{ left, top }}
+      ></span>
     </div>
   );
 };
