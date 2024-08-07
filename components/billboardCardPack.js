@@ -70,7 +70,7 @@ export const BillboardCardPack = () => {
   useEffect(() => {
     if (scrollable) {
       window.scrollTo(0, numberHeight);
-      sessionStorage.removeItem("height");
+      // sessionStorage.removeItem("height");
     }
   }, [scrollable, numberHeight]);
 
