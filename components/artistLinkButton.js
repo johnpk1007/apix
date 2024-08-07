@@ -14,7 +14,10 @@ export const ArtistLinkButton = ({ artist, page, extra }) => {
     router.push(`/artist/${artist}`);
   };
   return (
-    <div onClick={handleClick} className="rounded-r-lg hover:bg-slate-100">
+    <div
+      onClick={handleClick}
+      className="rounded-r-lg xxs:hover:bg-slate-800 md:hover:bg-slate-100 cursor-pointer"
+    >
       {extra}
       {extra === "Featuring" || extra === "&" || extra === "X" || extra === "x"
         ? " "

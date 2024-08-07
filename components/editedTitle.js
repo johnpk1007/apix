@@ -51,9 +51,11 @@ export const EditedTitle = ({ artist, page }) => {
                 key={idx}
                 className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl  relative"
               >
-                {/* {newArrItem[0]}
-                {page[idx].page ? <LinkButton artist={page[idx].artist} /> : ""} */}
-                <ArtistLinkButton artist={newArrItem[0]} page={page[idx]} />
+                {page[idx].page ? (
+                  <ArtistLinkButton artist={newArrItem[0]} page={page[idx]} />
+                ) : (
+                  newArrItem[0]
+                )}
               </div>
             );
           } else {
@@ -62,20 +64,24 @@ export const EditedTitle = ({ artist, page }) => {
                 key={idx}
                 className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl relative"
               >
-                {/* {newArrItem[0]}
-                {newArrItem[0] === "Featuring" ||
-                newArrItem[0] === "&" ||
-                newArrItem[0] === "X" ||
-                newArrItem[0] === "x"
-                  ? " "
-                  : ""}
-                {newArrItem[1]}{" "}
-                {page[idx].page ? <LinkButton artist={page[idx].artist} /> : ""} */}
-                <ArtistLinkButton
-                  artist={newArrItem[1]}
-                  page={page[idx]}
-                  extra={newArrItem[0]}
-                />
+                {page[idx].page ? (
+                  <ArtistLinkButton
+                    artist={newArrItem[1]}
+                    page={page[idx]}
+                    extra={newArrItem[0]}
+                  />
+                ) : (
+                  <div>
+                    {newArrItem[0]}
+                    {newArrItem[0] === "Featuring" ||
+                    newArrItem[0] === "&" ||
+                    newArrItem[0] === "X" ||
+                    newArrItem[0] === "x"
+                      ? " "
+                      : ""}
+                    {newArrItem[1]}{" "}
+                  </div>
+                )}
               </div>
             );
           }
@@ -85,9 +91,11 @@ export const EditedTitle = ({ artist, page }) => {
   } else {
     return (
       <div className="flex items-center font-poppins font-light lg:text-2xl xl:text-3xl relative">
-        {/* {artist}
-        {page[0].page ? <LinkButton artist={page[0].artist} /> : ""} */}
-        <ArtistLinkButton artist={artist} page={page[0]} />
+        {page[0].page ? (
+          <ArtistLinkButton artist={artist} page={page[0]} />
+        ) : (
+          artist
+        )}
       </div>
     );
   }
