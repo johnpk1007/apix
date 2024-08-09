@@ -8,18 +8,9 @@ export async function GET() {
   const response = new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
   );
-  await processInBackground();
-  return response;
-}
-
-async function processInBackground() {
   try {
     await connectToDB();
     const data = await billboardInsertion();
-    // const result = await billboardInsertionBeforeCheck(data);
-    // if (result) {
-    //   throw new Error("nothing to update");
-    // }
     await queInsertion(data);
     axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
@@ -33,4 +24,5 @@ async function processInBackground() {
   } catch (error) {
     console.error(error.message);
   }
+  return response;
 }
