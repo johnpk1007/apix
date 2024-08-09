@@ -20,16 +20,16 @@ export async function POST(request) {
   return response;
 }
 
-async function processStart(data) {
+function processStart(data) {
   const list = dataToArtistList(data);
-  await axios.post(
+  axios.post(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,
     JSON.stringify({ list: list, operationArray: [], num: 0 })
   );
 }
 
-async function processSendingBack({ list, operationArray, num }) {
-  await axios.post(
+function processSendingBack({ list, operationArray, num }) {
+  axios.post(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,
     JSON.stringify({ list: list, operationArray, num })
   );
@@ -39,7 +39,7 @@ async function processEnd({ operationArray }) {
   try {
     await connectToDB();
     billboardArtistInsertion(operationArray);
-    await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_3`);
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_3`);
   } catch (error) {
     console.error(error.message);
   }

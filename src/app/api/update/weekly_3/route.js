@@ -10,7 +10,7 @@ export async function GET() {
   const response = new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
   );
-  processInBackground();
+  await processInBackground();
   return response;
 }
 

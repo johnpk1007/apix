@@ -6,7 +6,7 @@ export async function POST(request) {
   const response = new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
   );
-  processInBackground(data);
+  await processInBackground(data);
   return response;
 }
 
@@ -40,7 +40,7 @@ async function processInBackground({ list, operationArray, num }) {
     await new Promise((resolve) => setTimeout(resolve, delay));
   }
   if (i < list.length) {
-    await axios.post(
+    axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
       JSON.stringify({ list: list, operationArray: newOperationArray, num: i }),
       {
@@ -50,7 +50,7 @@ async function processInBackground({ list, operationArray, num }) {
       }
     );
   } else {
-    await axios.post(
+    axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
       JSON.stringify({ list: list, operationArray: newOperationArray, num: i }),
       {
