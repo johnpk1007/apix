@@ -21,6 +21,14 @@ export default function HomePage() {
     setData(responseJson);
   };
 
+  // //experiment
+  // const weeklyFetch = async () => {
+  //   await fetch("/api/update/weekly_1");
+  // };
+  // useEffect(() => {
+  //   weeklyFetch();
+  // }, []);
+
   // normal fetch
   const fetchData = async () => {
     console.log("SessionData");

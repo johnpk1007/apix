@@ -1,8 +1,8 @@
 {
   "crons": [
     {
-      "path": "/api/update/weekly",
-      "schedule": "0 18 * * 3"
+      "path": "/api/update/weekly_1",
+      "schedule": "30 2 * * 5"
     },
     {
       "path": "/api/update/daily",
