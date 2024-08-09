@@ -1,6 +1,7 @@
 import { scrape } from "./scrape";
 import Billboard from "../../../../models/billboard";
 import mongoose from "mongoose";
+import { billboardInsertionBeforeCheck } from "./billboardInsertionBeforeCheck";
 
 export const billboardInsertion = async () => {
   const session = await mongoose.startSession();
@@ -15,6 +16,12 @@ export const billboardInsertion = async () => {
       obj.wks_on_chart = Number(obj.wks_on_chart);
       return obj;
     });
+
+    const result = await billboardInsertionBeforeCheck(data);
+    if (result) {
+      throw new Error("nothing to update");
+    }
+
     const bulkOperation = data.map((singleData) => ({
       insertOne: { document: singleData },
     }));

@@ -16,15 +16,10 @@ async function processInBackground() {
   try {
     await connectToDB();
     const data = await billboardInsertion();
-
-    const result = await billboardInsertionBeforeCheck(data);
-    if (result) {
-      throw new Error("nothing to update");
-    }
-    console.log(
-      "weekly_upate_3.checking if I'm scraping the same data is complete!"
-    );
-
+    // const result = await billboardInsertionBeforeCheck(data);
+    // if (result) {
+    //   throw new Error("nothing to update");
+    // }
     await queInsertion(data);
     await axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
