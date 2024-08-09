@@ -5,6 +5,7 @@ import { billboardInsertionBeforeCheck } from "../billboardInsertionBeforeCheck"
 import { queInsertion } from "../queInsertion";
 
 export async function GET() {
+  console.log("api/update/weekly_1 starts working");
   const response = new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
   );

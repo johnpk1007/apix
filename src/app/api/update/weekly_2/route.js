@@ -4,6 +4,7 @@ import { connectToDB } from "../../../../../utils/database";
 import { billboardArtistInsertion } from "../billboardArtistInsertion";
 
 export async function POST(request) {
+  console.log("api/update/weekly_2 starts working");
   const data = await request.json();
   const headers = request.headers;
   const request_type = headers.get("request_type");
@@ -11,36 +12,24 @@ export async function POST(request) {
     JSON.stringify({ message: "Request received. Processing in background." })
   );
   if (request_type === "send_data") {
-    processStart(data);
+    const list = dataToArtistList(data);
+    axios.post(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,
+      JSON.stringify({ list: list, operationArray: [], num: 0 })
+    );
   } else if (request_type === "return_data") {
-    processSendingBack(data);
+    axios.post(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,
+      JSON.stringify({ list: list, operationArray, num })
+    );
   } else if (request_type === "return_data_final") {
-    processEnd(data);
+    try {
+      await connectToDB();
+      billboardArtistInsertion(operationArray);
+      axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_3`);
+    } catch (error) {
+      console.error(error.message);
+    }
   }
   return response;
-}
-
-function processStart(data) {
-  const list = dataToArtistList(data);
-  axios.post(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,
-    JSON.stringify({ list: list, operationArray: [], num: 0 })
-  );
-}
-
-function processSendingBack({ list, operationArray, num }) {
-  axios.post(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,
-    JSON.stringify({ list: list, operationArray, num })
-  );
-}
-
-async function processEnd({ operationArray }) {
-  try {
-    await connectToDB();
-    billboardArtistInsertion(operationArray);
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_3`);
-  } catch (error) {
-    console.error(error.message);
-  }
 }

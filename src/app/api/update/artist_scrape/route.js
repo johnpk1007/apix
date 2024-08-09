@@ -2,15 +2,10 @@ import axios from "axios";
 import { artistScrape } from "../artistScrape";
 
 export async function POST(request) {
-  const data = await request.json();
+  const { list, operationArray, num } = await request.json();
   const response = new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
   );
-  await processInBackground(data);
-  return response;
-}
-
-async function processInBackground({ list, operationArray, num }) {
   const limit = Math.min(num + 5, list.length);
   const newOperationArray = operationArray;
   let i = num;
@@ -60,4 +55,5 @@ async function processInBackground({ list, operationArray, num }) {
       }
     );
   }
+  return response;
 }

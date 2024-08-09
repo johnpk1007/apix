@@ -10,11 +10,6 @@ export async function GET() {
   const response = new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
   );
-  await processInBackground();
-  return response;
-}
-
-async function processInBackground() {
   try {
     await connectToDB();
     await billboardQueInsertion();
@@ -27,4 +22,5 @@ async function processInBackground() {
   } catch (error) {
     console.error(error.message);
   }
+  return response;
 }
