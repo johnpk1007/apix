@@ -1,14 +1,10 @@
 import axios from "axios";
 import { connectToDB } from "../../../../../utils/database";
 import { billboardInsertion } from "../billboardInsertion";
-import { billboardInsertionBeforeCheck } from "../billboardInsertionBeforeCheck";
 import { queInsertion } from "../queInsertion";
 
-export async function GET() {
+export const GET = async () => {
   console.log("api/update/weekly_1 starts working");
-  const response = new Response(
-    JSON.stringify({ message: "Request received. Processing in background." })
-  );
   try {
     await connectToDB();
     const data = await billboardInsertion();
@@ -25,5 +21,7 @@ export async function GET() {
   } catch (error) {
     console.error(error.message);
   }
-  return response;
-}
+  return new Response(
+    JSON.stringify({ message: "Request received. Processing in background." })
+  );
+};
