@@ -1,6 +1,7 @@
 import { connectToDB } from "../../../../utils/database";
 import BillboardVideo from "../../../../models/billboardVideo";
-export async function GET() {
+
+export const GET = async () => {
   let content;
   try {
     await connectToDB();
@@ -14,4 +15,4 @@ export async function GET() {
   return new Response(JSON.stringify(content), {
     headers: { "Content-Type": "application/json" },
   });
-}
+};
