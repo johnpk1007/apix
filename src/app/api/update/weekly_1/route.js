@@ -17,13 +17,13 @@ async function processInBackground() {
     await connectToDB();
     const data = await billboardInsertion();
 
-    // const result = await billboardInsertionBeforeCheck(data);
-    // if (result) {
-    //   throw new Error("nothing to update");
-    // }
-    // console.log(
-    //   "weekly_upate_3.checking if I'm scraping the same data is complete!"
-    // );
+    const result = await billboardInsertionBeforeCheck(data);
+    if (result) {
+      throw new Error("nothing to update");
+    }
+    console.log(
+      "weekly_upate_3.checking if I'm scraping the same data is complete!"
+    );
 
     await queInsertion(data);
     await axios.post(

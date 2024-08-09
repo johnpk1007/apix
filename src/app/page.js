@@ -15,23 +15,13 @@ export default function HomePage() {
     typeof window !== "undefined" ? sessionStorage.getItem("data") : null;
 
   const setSessionData = () => {
-    console.log("SessionData");
     const responseJson = JSON.parse(sessionData);
     setBillboardWeek(stringFromId(responseJson[0]._id));
     setData(responseJson);
   };
 
-  // //experiment
-  // const weeklyFetch = async () => {
-  //   await fetch("/api/update/weekly_1");
-  // };
-  // useEffect(() => {
-  //   weeklyFetch();
-  // }, []);
-
   // normal fetch
   const fetchData = async () => {
-    console.log("SessionData");
     try {
       const response = await fetch("/api/main");
       if (!response.ok) {
