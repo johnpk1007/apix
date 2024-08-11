@@ -3,10 +3,19 @@ import Billboard from "../../../../models/billboard";
 import axios from "axios";
 
 export const GET = async () => {
+  let result;
   try {
     await connectToDB();
     const data = await Billboard.find({ artist: "Shaboozey" });
-    await Billboard.findByIdAndUpdate(data[0]._id, { artist: "Shboozey?" });
+    result = await Billboard.findByIdAndUpdate(
+      data[0]._id,
+      {
+        artist: "Shaboozey?",
+      },
+      {
+        returnOriginal: false,
+      }
+    );
     // console.log("data[0]._id:", data[0]._id);
     // axios.post(
     //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/experiment_2`,
@@ -16,7 +25,5 @@ export const GET = async () => {
     console.error(error);
   }
 
-  return new Response(
-    JSON.stringify({ message: "sending data to experiment_2" })
-  );
+  return new Response(JSON.stringify({ message: result }));
 };
