@@ -6,11 +6,12 @@ export const GET = async () => {
   try {
     await connectToDB();
     const data = await Billboard.find({ artist: "Shaboozey" });
-    console.log("data[0]._id:", data[0]._id);
-    axios.post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/experiment_2`,
-      JSON.stringify(data[0]._id)
-    );
+    await Billboard.findByIdAndUpdate(data[0]._id, { artist: "Shboozey?" });
+    // console.log("data[0]._id:", data[0]._id);
+    // axios.post(
+    //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/experiment_2`,
+    //   JSON.stringify(data[0]._id)
+    // );
   } catch (error) {
     console.error(error);
   }
