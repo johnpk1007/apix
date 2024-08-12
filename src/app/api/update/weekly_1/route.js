@@ -11,7 +11,7 @@ export const GET = async () => {
     await connectToDB();
     const data = await billboardInsertion();
     await queInsertion(data);
-    const result = await axios.post(
+    axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
       JSON.stringify(data),
       {
@@ -20,7 +20,7 @@ export const GET = async () => {
         },
       }
     );
-    console.log("result:", result);
+    console.log("tossed it");
   } catch (error) {
     console.error(error.message);
   }
