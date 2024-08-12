@@ -42,18 +42,9 @@ export async function POST(request) {
       operationArray: newOperationArray,
       num: i,
     });
-    // axios.post(
-    //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
-    //   JSON.stringify({ list: list, operationArray: newOperationArray, num: i }),
-    //   {
-    //     headers: {
-    //       request_type: "return_data",
-    //     },
-    //   }
-    // );
     axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
-      JSON.stringify({ list: list, operationArray: [], num: 0 }),
+      JSON.stringify({ list: list, operationArray: newOperationArray, num: i }),
       {
         headers: {
           request_type: "return_data",
