@@ -42,18 +42,24 @@ export async function POST(request) {
       operationArray: newOperationArray,
       num: i,
     });
-    console.log("check one");
-    axios.post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
-      JSON.stringify({ list: list, operationArray: newOperationArray, num: i }),
-      {
-        headers: {
-          request_type: "return_data",
-        },
-      }
-    );
-    console.log("check two");
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
+        JSON.stringify({
+          list: list,
+          operationArray: newOperationArray,
+          num: i,
+        }),
+        {
+          headers: {
+            request_type: "return_data",
+          },
+        }
+      );
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    } catch (error) {
+      console.error(error.message);
+    }
   } else {
     console.log("return_data_final:", {
       list: list,
