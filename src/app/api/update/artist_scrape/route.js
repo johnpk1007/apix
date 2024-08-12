@@ -46,7 +46,8 @@ export async function POST(request) {
       axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
         JSON.stringify({
-          list: list,
+          // list: list,
+          list: [],
           // operationArray: newOperationArray,
           operationArray: [],
           // num: i,
