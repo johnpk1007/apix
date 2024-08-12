@@ -42,6 +42,7 @@ export async function POST(request) {
       operationArray: newOperationArray,
       num: i,
     });
+    console.log("check one");
     axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
       JSON.stringify({ list: list, operationArray: newOperationArray, num: i }),
@@ -51,6 +52,7 @@ export async function POST(request) {
         },
       }
     );
+    console.log("check two");
     await new Promise((resolve) => setTimeout(resolve, 1000));
   } else {
     console.log("return_data_final:", {
