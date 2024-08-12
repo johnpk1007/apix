@@ -40,5 +40,6 @@ export async function POST(request) {
     //   console.error(error.message);
     // }
   }
+  console.log("api/update/weekly_2 finished");
   return response;
 }

@@ -78,5 +78,6 @@ export async function POST(request) {
     );
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
+  console.log("api/update/artist_scrape finished");
   return response;
 }
