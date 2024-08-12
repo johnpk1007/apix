@@ -6,6 +6,7 @@ import { billboardArtistInsertion } from "../billboardArtistInsertion";
 export const dynamic = "force-dynamic";
 
 export async function POST(request) {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   console.log("api/update/weekly_2 starts working");
   const data = await request.json();
   const headers = request.headers;
