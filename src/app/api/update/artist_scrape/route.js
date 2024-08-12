@@ -4,6 +4,7 @@ import { artistScrape } from "../artistScrape";
 export const dynamic = "force-dynamic";
 
 export async function POST(request) {
+  console.log("api/update/artist_scrape starts working");
   const { list, operationArray, num } = await request.json();
   const response = new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
@@ -46,12 +47,9 @@ export async function POST(request) {
       axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
         JSON.stringify({
-          // list: list,
-          list: [],
-          // operationArray: newOperationArray,
-          operationArray: [],
-          // num: i,
-          num: 0,
+          list: list,
+          operationArray: newOperationArray,
+          num: i,
         }),
         {
           headers: {
