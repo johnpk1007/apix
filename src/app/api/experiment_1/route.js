@@ -8,9 +8,9 @@ export const GET = async () => {
     await connectToDB();
     data = await Billboard.findOneAndUpdate(
       { artist: "Shaboozey" },
-      { artist: "Shaboozey?" },
-      { returnOriginal: false }
-    )();
+      { title: "A Bar Song (Tipsy)?" },
+      { new: true }
+    );
     // { artist: "Shaboozey" }
     // result = await Billboard.findByIdAndUpdate(
     //   data[0]._id,
