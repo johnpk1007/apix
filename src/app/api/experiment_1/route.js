@@ -6,10 +6,12 @@ export const GET = async () => {
   let data;
   try {
     await connectToDB();
-    data = await Billboard
-      .find
-      // { artist: "Shaboozey" }
-      ();
+    data = await Billboard.findOneAndUpdate(
+      { artist: "Shaboozey" },
+      { artist: "Shaboozey?" },
+      { returnOriginal: false }
+    )();
+    // { artist: "Shaboozey" }
     // result = await Billboard.findByIdAndUpdate(
     //   data[0]._id,
     //   {
