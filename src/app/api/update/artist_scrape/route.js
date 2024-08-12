@@ -51,7 +51,7 @@ export async function POST(request) {
         },
       }
     );
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   } else {
     console.log("return_data_final:", {
       list: list,
@@ -67,7 +67,7 @@ export async function POST(request) {
         },
       }
     );
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
   return response;
 }

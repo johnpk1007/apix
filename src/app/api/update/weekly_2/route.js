@@ -16,19 +16,19 @@ export async function POST(request) {
   if (request_type === "send_data") {
     const list = dataToArtistList(data);
     console.log("list:", list);
-    await axios.post(
+    axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,
       JSON.stringify({ list: list, operationArray: [], num: 0 })
     );
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   } else if (request_type === "return_data") {
     console.log("return_data:", data);
     const { list, operationArray, num } = data;
-    await axios.post(
+    axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,
       JSON.stringify({ list: list, operationArray, num })
     );
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   } else if (request_type === "return_data_final") {
     console.log("return_data_final:", data);
     // try {
