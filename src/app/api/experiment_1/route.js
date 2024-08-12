@@ -3,10 +3,10 @@ import Billboard from "../../../../models/billboard";
 import axios from "axios";
 
 export const GET = async () => {
-  let result;
+  let data;
   try {
     await connectToDB();
-    const data = await Billboard
+    data = await Billboard
       .find
       // { artist: "Shaboozey" }
       ();
