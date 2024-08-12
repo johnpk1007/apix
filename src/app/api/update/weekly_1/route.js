@@ -3,6 +3,8 @@ import { connectToDB } from "../../../../../utils/database";
 import { billboardInsertion } from "../billboardInsertion";
 import { queInsertion } from "../queInsertion";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async () => {
   console.log("api/update/weekly_1 starts working");
   try {

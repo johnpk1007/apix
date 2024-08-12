@@ -6,6 +6,8 @@ import { billboardUpdate } from "../billboardUpdate";
 import { billboardArtistUpdate } from "../billboardArtistUpdate";
 import { billboardMatching } from "../billboardMatching";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const response = new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
