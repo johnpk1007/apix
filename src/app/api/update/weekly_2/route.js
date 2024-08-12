@@ -22,6 +22,7 @@ export async function POST(request) {
     );
     await new Promise((resolve) => setTimeout(resolve, 1000));
   } else if (request_type === "return_data") {
+    console.log("return_data:", data);
     const { list, operationArray, num } = data;
     axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/artist_scrape`,

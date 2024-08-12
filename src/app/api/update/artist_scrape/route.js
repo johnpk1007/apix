@@ -35,6 +35,11 @@ export async function POST(request) {
     await new Promise((resolve) => setTimeout(resolve, delay));
   }
   if (i < list.length) {
+    console.log("return_data:", {
+      list: list,
+      operationArray: newOperationArray,
+      num: i,
+    });
     axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
       JSON.stringify({ list: list, operationArray: newOperationArray, num: i }),
@@ -46,6 +51,11 @@ export async function POST(request) {
     );
     await new Promise((resolve) => setTimeout(resolve, 1000));
   } else {
+    console.log("return_data_final:", {
+      list: list,
+      operationArray: newOperationArray,
+      num: i,
+    });
     axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
       JSON.stringify({ list: list, operationArray: newOperationArray, num: i }),
