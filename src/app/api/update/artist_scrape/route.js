@@ -44,6 +44,7 @@ export async function POST(request) {
         },
       }
     );
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   } else {
     axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
@@ -54,6 +55,7 @@ export async function POST(request) {
         },
       }
     );
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
   return response;
 }
