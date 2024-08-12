@@ -2,6 +2,8 @@ import { connectToDB } from "../../../../utils/database";
 import Billboard from "../../../../models/billboard";
 import axios from "axios";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async () => {
   let data;
   try {
