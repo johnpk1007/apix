@@ -1,6 +1,8 @@
 import axios from "axios";
 import { artistScrape } from "../artistScrape";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request) {
   const { list, operationArray, num } = await request.json();
   const response = new Response(
