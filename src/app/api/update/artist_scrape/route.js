@@ -4,6 +4,7 @@ import { artistScrape } from "../artistScrape";
 export const dynamic = "force-dynamic";
 
 export async function POST(request) {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   console.log("api/update/artist_scrape starts working");
   const { list, operationArray, num } = await request.json();
   const response = new Response(
