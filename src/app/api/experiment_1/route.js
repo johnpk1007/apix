@@ -6,16 +6,19 @@ export const GET = async () => {
   let result;
   try {
     await connectToDB();
-    const data = await Billboard.find({ artist: "Shaboozey" });
-    result = await Billboard.findByIdAndUpdate(
-      data[0]._id,
-      {
-        artist: "Shaboozey?",
-      },
-      {
-        returnOriginal: false,
-      }
-    );
+    const data = await Billboard
+      .find
+      // { artist: "Shaboozey" }
+      ();
+    // result = await Billboard.findByIdAndUpdate(
+    //   data[0]._id,
+    //   {
+    //     artist: "Shaboozey?",
+    //   },
+    //   {
+    //     returnOriginal: false,
+    //   }
+    // );
     // console.log("data[0]._id:", data[0]._id);
     // axios.post(
     //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/experiment_2`,
@@ -25,5 +28,6 @@ export const GET = async () => {
     console.error(error);
   }
 
-  return new Response(JSON.stringify({ message: result }));
+  //   return new Response(JSON.stringify({ message: result }));
+  return new Response(JSON.stringify({ message: data }));
 };
