@@ -10,9 +10,9 @@ export async function POST(request) {
   // const data = await request.json();
   // const headers = request.headers;
   // const request_type = headers.get("request_type");
-  // const response = new Response(
-  //   JSON.stringify({ message: "Request received. Processing in background." })
-  // );
+  const response = new Response(
+    JSON.stringify({ message: "Request received. Processing in background." })
+  );
   // if (request_type === "send_data") {
   //   const list = dataToArtistList(data);
   //   axios.post(
