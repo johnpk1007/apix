@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export const GET = async () => {
   console.log("api/update/weekly_1 starts working");
-  backgroundProcess();
+  await backgroundProcess();
   return new Response(
     JSON.stringify({ message: "Request received. Processing in background." })
   );
@@ -18,7 +18,7 @@ const backgroundProcess = async () => {
     await connectToDB();
     const data = await billboardInsertion();
     await queInsertion(data);
-    await axios.post(
+    axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/update/weekly_2`,
       JSON.stringify(data),
       {
@@ -27,6 +27,7 @@ const backgroundProcess = async () => {
         },
       }
     );
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("tossed it");
   } catch (error) {
     console.error(error.message);
