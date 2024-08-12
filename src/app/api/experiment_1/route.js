@@ -11,6 +11,9 @@ export const GET = async () => {
       { title: "A Bar Song (Tipsy)?" },
       { new: true }
     );
+
+    data.save();
+
     // { artist: "Shaboozey" }
     // result = await Billboard.findByIdAndUpdate(
     //   data[0]._id,
