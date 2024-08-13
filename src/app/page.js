@@ -23,7 +23,7 @@ export default function HomePage() {
   // normal fetch
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/main");
+      const response = await fetch("/api/main", { cache: "default" });
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
