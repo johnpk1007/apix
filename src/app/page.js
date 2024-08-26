@@ -25,7 +25,7 @@ export default function HomePage() {
     try {
       const response = await fetch("/api/main", {
         next: {
-          revalidate: 0,
+          revalidate: 86400,
         },
       });
       if (!response.ok) {
