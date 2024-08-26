@@ -23,7 +23,11 @@ export default function HomePage() {
   // normal fetch
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/main", { cache: "default" });
+      const response = await fetch("/api/main", {
+        next: {
+          revalidate: 0,
+        },
+      });
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
