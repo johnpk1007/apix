@@ -25,14 +25,14 @@ export const ArtistCard = ({ data, artist }) => {
             </div>
           </div>
           <div className="h-1/3 xxs:block xs:hidden md:block">
-            <div className="font-roboto font-base md:text-base lg:text-xl xl:text-2xl text-white text-pretty mt-5 ml-2 ">
+            <div className="font-poppins font-black md:text-base lg:text-xl xl:text-2xl text-white text-pretty mt-5 ml-2 ">
               {data ? (
                 stringDot(`${data.title}`, 30)
               ) : (
                 <YoutubeSkeletonText width={300} height={20} />
               )}
             </div>
-            <div className="text-neutral-500 font-roboto font-base md:text-sm lg:text-base text-xl ml-2">
+            <div className="xxs:text-white md:text-neutral-500 xxs:font-poppins md:font-roboto xxs:font-light md:font-base md:text-sm lg:text-base xxs:text-base md:text-xl ml-2">
               {data ? (
                 stringDot(`${artist}`, 40)
               ) : (

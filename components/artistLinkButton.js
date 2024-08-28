@@ -30,7 +30,7 @@ export const ArtistLinkButton = ({ artist, extra }) => {
   return (
     <div
       onClick={handleClick}
-      className="rounded-lg xxs:hover:bg-slate-800 md:hover:bg-slate-100 cursor-pointer relative overflow-hidden"
+      className="rounded-lg xs:hover:bg-slate-800 md:hover:bg-slate-100 cursor-pointer relative overflow-hidden"
     >
       {extra}
       {extra === "Featuring" || extra === "&" || extra === "X" || extra === "x"
