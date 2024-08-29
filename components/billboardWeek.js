@@ -9,7 +9,7 @@ export const BillboardWeek = ({ billboardWeek }) => {
         Billboard Hot 100
       </div>
       {billboardWeek !== "" ? (
-        <div className="font-poppins font-semibold xxs:text-sm md:text-md lg:text-xl xl:text-2xl text-right xxs:text-white md:text-black">
+        <div className="font-poppins font-semibold xxs:text-sm md:text-md lg:text-xl xl:text-2xl text-right xxs:text-white md:text-black text-nowrap">
           {billboardWeek}
         </div>
       ) : (
