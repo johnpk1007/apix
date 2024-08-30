@@ -29,9 +29,27 @@ export const BillboardCard = ({ data }) => {
               </div>
             )}
 
-            <div className="xxs:hidden md:flex h-full flex-1 justify-center items-center text-white font-poppins font-bold md:text-xl xl:text-4xl">
+            {/* <div className="xxs:hidden md:flex h-full flex-1 justify-center items-center text-white font-poppins font-bold md:text-xl xl:text-4xl">
               {data ? data.this_week : <YoutubeSkeletonNumber />}
-            </div>
+            </div> */}
+
+            {/* <div className="xxs:hidden md:flex h-full flex-1 justify-center items-center text-white font-poppins font-bold md:text-xl xl:text-4xl"> */}
+            {data ? (
+              data.this_week !== 100 ? (
+                <div className="xxs:hidden md:flex h-full flex-1 justify-center items-center text-white font-poppins font-bold md:text-xl xl:text-4xl">
+                  {data ? data.this_week : <YoutubeSkeletonNumber />}
+                </div>
+              ) : (
+                <div className="xxs:hidden md:flex h-full flex-1 justify-center items-center text-white font-poppins font-bold md:text-base xl:text-2xl">
+                  {data ? data.this_week : <YoutubeSkeletonNumber />}
+                </div>
+              )
+            ) : (
+              <div className="h-full flex-1 flex justify-center items-center">
+                <YoutubeSkeletonNumber />
+              </div>
+            )}
+            {/* </div> */}
           </div>
           <div className="h-1/3 w-full relative">
             <div className="text-white font-roboto font-base md:text-base lg:text-xl xl:text-2xl mt-3 ml-2 xxs:hidden md:block">
