@@ -1,5 +1,6 @@
 import { connectToDB } from "../../../../utils/database";
 import BillboardVideo from "../../../../models/billboardVideo";
+import { NextResponse } from "next/server";
 
 export const GET = async () => {
   let content;
@@ -12,7 +13,11 @@ export const GET = async () => {
     console.error(error);
   }
 
-  return new Response(JSON.stringify(content), {
-    headers: { "Content-Type": "application/json" },
-  });
+  return NextResponse.json(content);
+
+  // return new Response(JSON.stringify(content), {
+  //   headers: { "Content-Type": "application/json" },
+  // });
 };
+
+export const revalidate = 0;
