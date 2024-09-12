@@ -20,4 +20,4 @@ export const GET = async () => {
   // });
 };
 
-export const revalidate = 0;
+export const revalidate = 86400;
